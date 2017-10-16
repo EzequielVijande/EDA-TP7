@@ -7,9 +7,7 @@ class GenericState
 public:
 	GenericState();
 	virtual ~GenericState();
-
-private:
-
+	void virtual RunRoutine(GenericEvent*)=0;
 };
 
 #endif //STATE_H
