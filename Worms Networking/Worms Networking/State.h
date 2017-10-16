@@ -1,33 +1,128 @@
 #ifndef STATE_H
 #define STATE_H
 
-enum State{IDLE, W_WAIT, J_WAIT, WALKING, JUMPING, LISTENING};
+//Modulo que contiene todos los estados posibles para la FSM.
 
 class GenericState
 {
 public:
 	GenericState();
 	virtual ~GenericState();
-	virtual GenericState* OnEvent0(ev0*)
+	virtual GenericState* PressMove(WormEvent* ev)
 	{
-		return this;
+		GenericState* estado_actual = new GenericState;
+		return estado_actual;
 	}
-	virtual GenericState* OnEvent1(ev1*)
+	virtual GenericState* ReleaseMove(WormEvent*ev)
 	{
-		return this;
+		GenericState* estado_actual = new GenericState;
+		return estado_actual;
 	}
-	virtual GenericState* OnEvent2(ev2*)
+	virtual GenericState* PressJump(WormEvent*ev)
 	{
-		return this;
+		GenericState* estado_actual = new GenericState;
+		return estado_actual;
 	}
-	virtual GenericState* OnEvent3(ev3*)
+	virtual GenericState* ReleaseJump(WormEvent*ev)
 	{
-		return this;
+		GenericState* estado_actual = new GenericState;
+		return estado_actual;
 	}
-	virtual	GenericState* OnEvent4(ev4*)
+	virtual	GenericState* Refresh(WormEvent*ev)
 	{
-		return this;
+		GenericState* estado_actual = new GenericState;
+		return estado_actual;
 	}
+	virtual	GenericState* Quit(WormEvent*ev)
+	{
+		GenericState* estado_actual = new GenericState;
+		return estado_actual;
+	}
+	virtual	GenericState* NoEvent(WormEvent*ev)
+	{
+		GenericState* estado_actual = new GenericState;
+		return estado_actual;
+	}
+
+};
+
+class  IdleState : public GenericState
+{
+public:
+	IdleState();
+	virtual ~IdleState();
+	virtual GenericState* PressMove(WormEvent* ev);
+	virtual GenericState* ReleaseMove(WormEvent*ev);
+	virtual GenericState* PressJump(WormEvent*ev);
+	virtual GenericState* ReleaseJump(WormEvent*ev);
+	virtual	GenericState* Refresh(WormEvent*ev);
+	virtual	GenericState* Quit(WormEvent*ev);
+	virtual	GenericState* NoEvent(WormEvent*ev);
+
+
+};
+
+class  MovingState : public GenericState
+{
+public:
+	MovingState();
+	virtual ~MovingState();
+	virtual GenericState* PressMove(WormEvent* ev);
+	virtual GenericState* ReleaseMove(WormEvent*ev);
+	virtual GenericState* PressJump(WormEvent*ev);
+	virtual GenericState* ReleaseJump(WormEvent*ev);
+	virtual	GenericState* Refresh(WormEvent*ev);
+	virtual	GenericState* Quit(WormEvent*ev);
+	virtual	GenericState* NoEvent(WormEvent*ev);
+
+
+};
+
+class  WaitingMoveState : public GenericState //Representa el intervalo entre el momento que se presiona
+{											  //la tecla para comenzar el movimiento y el momento en el
+public:									      //efectivamente se inicia el movimiento.
+	WaitingMoveState();
+	virtual ~WaitingMoveState();
+	virtual GenericState* PressMove(WormEvent* ev);
+	virtual GenericState* ReleaseMove(WormEvent*ev);
+	virtual GenericState* PressJump(WormEvent*ev);
+	virtual GenericState* ReleaseJump(WormEvent*ev);
+	virtual	GenericState* Refresh(WormEvent*ev);
+	virtual	GenericState* Quit(WormEvent*ev);
+	virtual	GenericState* NoEvent(WormEvent*ev);
+
+
+};
+
+class  WaitingJumpState : public GenericState //Representa el intervalo entre el momento que se presiona
+{											  //la tecla para iniciar el salto y el momento en el que inicia el salto.
+public:
+	WaitingJumpState();
+	virtual ~WaitingJumpState();
+	virtual GenericState* PressMove(WormEvent* ev);
+	virtual GenericState* ReleaseMove(WormEvent*ev);
+	virtual GenericState* PressJump(WormEvent*ev);
+	virtual GenericState* ReleaseJump(WormEvent*ev);
+	virtual	GenericState* Refresh(WormEvent*ev);
+	virtual	GenericState* Quit(WormEvent*ev);
+	virtual	GenericState* NoEvent(WormEvent*ev);
+
+
+};
+
+class  JumpingState : public GenericState
+{
+public:
+	JumpingState();
+	virtual ~JumpingState();
+	virtual GenericState* PressMove(WormEvent* ev);
+	virtual GenericState* ReleaseMove(WormEvent*ev);
+	virtual GenericState* PressJump(WormEvent*ev);
+	virtual GenericState* ReleaseJump(WormEvent*ev);
+	virtual	GenericState* Refresh(WormEvent*ev);
+	virtual	GenericState* Quit(WormEvent*ev);
+	virtual	GenericState* NoEvent(WormEvent*ev);
+
 
 };
 

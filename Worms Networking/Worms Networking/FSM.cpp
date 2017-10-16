@@ -2,36 +2,45 @@
 
 	fsm::fsm()
 { 
+		estado = new IdleState(); //Pone la FSM en su estado inicial.
+		prox_estado = nullptr;
 }
 
 void fsm:: dispatch(GenericEvent* ev)
 {
-	switch (ev->GetEventValue())
+	switch (ev->GetEvent())
 	{
-		case EV0:
-			prox_estado = estado->OnEvent0((ev0*)ev);
+		case PRESS_MOVE:
+			prox_estado = estado->PressMove((WormEvent*)ev);
 			break;
 
-		case EV1:
-			prox_estado = estado->OnEvent1((ev1*)ev);
+		case RELEASE_MOVE:
+			prox_estado = estado->ReleaseMove((WormEvent*)ev);
 			break;
 
-		case EV2:
-			prox_estado = estado->OnEvent2((ev2*)ev);
+		case PRESS_JUMP:
+			prox_estado = estado->PressJump((WormEvent*)ev);
 			break;
 
-		case EV3:
-			prox_estado = estado->OnEvent3((ev3*)ev);
+		case RELEASE_JUMP:
+			prox_estado = estado->ReleaseJump((WormEvent*)ev);
 			break;
 
-		case EV4:
-			prox_estado = estado->OnEvent4((ev4*)ev);
+		case REFRESH:
+			prox_estado = estado->Refresh((WormEvent*)ev);
 			break;
+		case QUIT:
+			prox_estado = estado->Quit((WormEvent*)ev);
+			break;
+		case NO_EVENT:
+			prox_estado = estado->NoEvent((WormEvent*)ev);
+			break;
+
 	}
 	if (prox_estado != nullptr)
 	{
 		delete estado;
 		estado = prox_estado;
-		prox_estado= nullptr
+		prox_estado = nullptr;
 	}
 }

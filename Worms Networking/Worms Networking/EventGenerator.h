@@ -4,23 +4,15 @@
 #include "Worm.h"
 #include "allegro5\allegro.h"
 #include "boost\asio.hpp"
+#include "Event.h"
+#include "Output.h" //Lo de graphics iria en este header
 
-//#include "genericEvent.h"
-//#include "Graphics.h"
-
-enum event{PRESS_MOVE, RELEASE_MOVE, PRESS_JUMP, RELEASE_JUMP, REFRESH, QUIT, NO_EVENT};
 
 #define P1_LEFT		ALLEGRO_KEY_LEFT
 #define P1_RIGHT	ALLEGRO_KEY_RIGHT
 #define P1_UP		ALLEGRO_KEY_UP
 
-class genericEvent
-{
-public:
-	int eventType;
-	char ud;
 
-};
 class Graphic
 {
 	int hay_que_agregarlo;
@@ -34,7 +26,7 @@ public:
 	void searchForEvents();
 	bool hayEvento();
 	bool isNotQuit();
-	genericEvent getNextEvent();
+	GenericEvent getNextEvent();
 private:
 	void shape(ALLEGRO_EVENT ev);
 	void shape(char * buf, unsigned int cant);
@@ -44,7 +36,7 @@ private:
 
 	char buffer[512];
 	bool quit;
-	std::list<genericEvent> eventList;
+	std::list<GenericEvent> eventList;
 
 	boost::asio::io_service*  IO_handler;
 	boost::asio::ip::tcp::socket* socket_forServer;

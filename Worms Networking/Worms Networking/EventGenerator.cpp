@@ -57,42 +57,42 @@ bool EventGenerator::isNotQuit()
 	La funcion  getNextEvent supone que hay por lo menos un elemento en la lista, se debe preguntar antes
 	si lo hay con la funcion hayEvento
 */
-genericEvent EventGenerator::getNextEvent()
+GenericEvent EventGenerator::getNextEvent()
 {
-	std::list<genericEvent>::iterator it= eventList.begin();
-	genericEvent  current_ev = (*it);
+	std::list<GenericEvent>::iterator it= eventList.begin();
+	GenericEvent  current_ev = (*it);
 	eventList.pop_front();
 	return current_ev;
 }
 
 void EventGenerator::shape(ALLEGRO_EVENT ev)
 {
-		genericEvent events; //hay que cambiarlo a un wormEvent 
+	GenericEvent events; //hay que cambiarlo a un wormEvent 
 		switch (ev.type) 
 		{
 			case ALLEGRO_EVENT_DISPLAY_CLOSE:
-				events.eventType = QUIT;
-				events.ud = 0;
+				events.SetEvent(QUIT);
+				events.SetUd(0);
 				quit = true;
 				break;
 			case ALLEGRO_EVENT_TIMER:
-				events.eventType = REFRESH;
-				events.ud = 0;
+				events.SetEvent(REFRESH);
+				events.SetUd(0);
 				break;
 			case ALLEGRO_EVENT_KEY_DOWN:
 				switch (ev.keyboard.keycode)
 				{
 				case P1_LEFT:
-					events.eventType = PRESS_MOVE;
-					events.ud = P1_LEFT;
+					events.SetEvent(PRESS_MOVE);
+					events.SetUd(P1_LEFT);
 					break;
 				case P1_RIGHT:
-					events.eventType = PRESS_MOVE;
-					events.ud = P1_RIGHT;
+					events.SetEvent(PRESS_MOVE);
+					events.SetUd(P1_RIGHT);
 					break;
 				case P1_UP:
-					events.eventType = PRESS_JUMP;
-					events.ud = P1_UP;
+					events.SetEvent(PRESS_JUMP);
+					events.SetUd(P1_UP);
 					break;
 				}
 				break;
@@ -100,16 +100,16 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 				switch (ev.keyboard.keycode)
 				{
 				case P1_LEFT:
-					events.eventType = RELEASE_MOVE;
-					events.ud = P1_LEFT;
+					events.SetEvent(RELEASE_MOVE);
+					events.SetUd(P1_LEFT);
 					break;
 				case P1_RIGHT:
-					events.eventType = RELEASE_MOVE;
-					events.ud = P1_RIGHT;
+					events.SetEvent(RELEASE_MOVE);
+					events.SetUd(P1_RIGHT);
 					break;
 				case P1_UP:
-					events.eventType = RELEASE_JUMP;
-					events.ud = P1_UP;
+					events.SetEvent(RELEASE_JUMP);
+					events.SetUd(P1_UP);
 					break;
 				}
 				break;

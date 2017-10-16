@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventGenerator.cpp" />
     <ClCompile Include="FSM.cpp" />
     <ClCompile Include="Output.cpp" />
