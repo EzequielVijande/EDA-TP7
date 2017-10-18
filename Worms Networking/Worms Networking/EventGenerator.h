@@ -14,15 +14,6 @@
 #define P1_UP		ALLEGRO_KEY_UP
 
 
-class Graphic
-{
-	int hay_que_agregarlo;
-};
-class BoostResources
-{
-public:
-	boost::asio::ip::tcp::socket* socket;
-};
 
 struct WormInfo
 {
