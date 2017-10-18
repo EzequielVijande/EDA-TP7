@@ -63,6 +63,9 @@
     <ClInclude Include="WaitingMoveState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="graphic_movement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Output.cpp">
@@ -89,19 +92,10 @@
     <ClCompile Include="IdleState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JumpingState.cpp">
+    <ClCompile Include="graphic_movement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MovingState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WaitingJumpState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WaitingMoveState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="State.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
