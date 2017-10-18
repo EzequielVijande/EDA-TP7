@@ -2,21 +2,18 @@
 #define REFRESH_EVENT
 #include "Event.h"
 #include "graphic_movement.h"
-
+#include "EventGenerator.h"
 class RefreshEvent : public GenericEvent
 {
 public:
+	graphic_movement* p2graphic;
+	Worm* p2worm;
+	std::list<WormInfo>::iterator it;
+	unsigned int worm_number;
 	
-private:
-	graphic_movement * viewer;
-
 	//Datos de Boost
-	char buf[512];
-	char sequence[255];
 
-	boost::asio::io_service*  IO_handler;
-	boost::asio::ip::tcp::socket* socket_forServer;
-	boost::asio::ip::tcp::acceptor* server_acceptor;
+	boost::asio::ip::tcp::socket* socket_;
 };
 
 #endif //REFRESH_EVENT

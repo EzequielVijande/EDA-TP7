@@ -1,7 +1,7 @@
 #ifndef _H_JUMPINGSATE
 #define _H_JUMPINGSTATE
 
-#include "GenericState.h"
+#include "State.h"
 #include "WaitingMoveState.h"
 #include "WaitingJumpState.h"
 #include "IdleState.h"

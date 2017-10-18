@@ -5,7 +5,7 @@
 class WormEvent : public GenericEvent
 {
 
-private:
+public:
 	Worm* worm;
 };
 

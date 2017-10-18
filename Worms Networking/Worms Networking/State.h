@@ -11,13 +11,12 @@ class GenericState
 public:
 	GenericState();
 	virtual ~GenericState();
-	virtual GenericState* PressMove(WormEvent* ev) = 0;
-	virtual GenericState* ReleaseMove(WormEvent*ev) = 0;
-	virtual GenericState* PressJump(WormEvent*ev) = 0;
-	virtual GenericState* ReleaseJump(WormEvent*ev) = 0;
-	virtual	void Refresh(RefreshEvent*ev); //Refresh la defino en el cpp de GenericState ya que es comun a muchas de sus clases derivadas.
-	virtual	GenericState* Quit(WormEvent*ev) = 0;
-	virtual	GenericState* NoEvent(WormEvent*ev) = 0;
+	virtual GenericState* PressMove(WormEvent* ev);
+	virtual GenericState* ReleaseMove(WormEvent*ev);
+	virtual GenericState* PressJump(WormEvent*ev);
+	virtual GenericState* ReleaseJump(WormEvent*ev);
+	virtual	GenericState* Refresh(RefreshEvent*ev); //Refresh la defino en el cpp de GenericState ya que es comun a muchas de sus clases derivadas.
+	virtual	GenericState* Quit(RefreshEvent*ev);
 };
 
 

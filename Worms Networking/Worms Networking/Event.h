@@ -3,7 +3,7 @@
 
 //Modulo que contiene la estructura general de un evento.
 
-enum event{PRESS_MOVE, RELEASE_MOVE, PRESS_JUMP, RELEASE_JUMP, REFRESH, QUIT, NO_EVENT};
+enum event{PRESS_MOVE, RELEASE_MOVE, PRESS_JUMP, RELEASE_JUMP, REFRESH, QUIT};
 
 class GenericEvent
 {

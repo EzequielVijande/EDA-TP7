@@ -5,16 +5,13 @@ WaitingMoveState::~WaitingMoveState() {};
 
 GenericState* WaitingMoveState::PressMove(WormEvent* ev)
 {
-	//Fijarse si se cumplio el lapso de tiempo necesario
-	//cambia a moving o sigue igual.
-	return ev;
+	WaitingMoveState* prox_estado = new WaitingMoveState; 
+	return prox_estado;
 }
 
 GenericState* WaitingMoveState::ReleaseMove(WormEvent*ev)
 {
-	//Falta llamar a las funciones de worm
-	//desde el worm que se recibe en el evento.
-
+	(ev->worm)->stopMoving();
 	IdleState* prox_estado = new IdleState; //No se llego a cumplir el lapso de tiempo necesario
 	return prox_estado;
 }
@@ -34,8 +31,3 @@ GenericState* WaitingMoveState::ReleaseJump(WormEvent*ev)
 	return prox_estado;
 }
 
-GenericState* WaitingMoveState::NoEvent(WormEvent*ev)
-{
-	IdleState* prox_estado = new IdleState; //no deberia poder recibirse este evento desde WaitingMove.
-	return prox_estado;
-}
