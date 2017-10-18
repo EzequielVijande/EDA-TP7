@@ -3,6 +3,8 @@
 #include "Event.h"
 #include "graphic_movement.h"
 #include "EventGenerator.h"
+#include "boost\asio.hpp"
+
 class RefreshEvent : public GenericEvent
 {
 public:

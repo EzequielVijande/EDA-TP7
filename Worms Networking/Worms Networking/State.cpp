@@ -1,10 +1,6 @@
 #include "State.h"
 
 
-GenericState::GenericState()
-{
-
-}
 GenericState:: ~GenericState()
 {
 

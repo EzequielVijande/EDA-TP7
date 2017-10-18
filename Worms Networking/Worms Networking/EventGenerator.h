@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include "State.h"
 #include "Worm.h"
 #include "allegro5\allegro.h"
 #include "boost\asio.hpp"

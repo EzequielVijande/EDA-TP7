@@ -7,7 +7,6 @@
 class GenericState
 {
 public:
-	GenericState();
 	virtual ~GenericState();
 	virtual GenericState* PressMove(WormEvent* ev);
 	virtual GenericState* ReleaseMove(WormEvent*ev);
