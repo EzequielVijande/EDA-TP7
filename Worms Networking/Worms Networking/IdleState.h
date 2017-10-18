@@ -2,6 +2,10 @@
 #define _H_IDLESTATE
 
 #include "GenericState.h"
+#include "JumpingState.h"
+#include "WaitingMoveState.h"
+#include "WaitingJumpState.h"
+#include "WormEvent.h"
 
 class  IdleState : public GenericState
 {

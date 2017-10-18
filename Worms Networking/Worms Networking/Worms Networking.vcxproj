@@ -115,11 +115,16 @@
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventGenerator.h" />
     <ClInclude Include="FSM.h" />
+    <ClInclude Include="IdleState.h" />
+    <ClInclude Include="JumpingState.h" />
+    <ClInclude Include="MovingState.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="RefreshEvent.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="WaitingJumpState.h" />
+    <ClInclude Include="WaitingMoveState.h" />
     <ClInclude Include="Worm.h" />
     <ClInclude Include="WormEvent.h" />
   </ItemGroup>
@@ -128,6 +133,7 @@
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventGenerator.cpp" />
     <ClCompile Include="FSM.cpp" />
+    <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="Worm.cpp" />
