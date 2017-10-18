@@ -5,6 +5,10 @@
 #include "Client.h"
 #include "fileHandler.h"
 #include "fsm.h"
+#include <allegro5\allegro_image.h>
+
+const float FPS = 50.0;
+
 //#include "Graphics.h"
 
 #define DEF_PORT 12345
@@ -14,18 +18,33 @@ int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia
 
 bool tryConection(vector<string> & ipsVector, int maquinaPropia, maquina * p2Mymaquina);
 
+bool initAll(ALLEGRO_DISPLAY * display, ALLEGRO_TIMER * timer);
+
 int main(int argc, char ** argv)
 {
 	//inicilizacion de allegro y boost
+	
+	ALLEGRO_DISPLAY * display = nullptr;
+	ALLEGRO_TIMER * timer = nullptr;
+
+	if (!initAll(display, timer))
+	{
+		//ERROR
+	}
+
+	graphic_movement Graphics;
+
+	Graphics.init();
 
 	fileHandler ipsHandler("ips.txt", 'r'); // Abro el archivo de las ips en modo escritura
 	vector <string> ipsVector;
 	ipsHandler.extractLines(ipsVector);
 	int maquinaPropia = 0, cantMaquinas = (int)ipsVector.size();
 
+	maquina * p2Mymaquina = nullptr;
+
 	if (parserCmd(ipsVector, cantMaquinas, maquinaPropia, argc, argv)) //luego del parser, ya se que maquina soy
 	{
-		maquina * p2Mymaquina = nullptr;
 
 		if (tryConection(ipsVector, maquinaPropia, p2Mymaquina))
 		{
@@ -38,9 +57,9 @@ int main(int argc, char ** argv)
 	}
 	fsm state_machine;
 	Worm worms(maquinaPropia);
-/*
-	EventGenerator eg(worms,Graphics); // se le pasan cosas que sobreviven al dispatcher
+	EventGenerator eg(&worms,&Graphics,p2Mymaquina); // se le pasan cosas que sobreviven al dispatcher
 
+	al_start_timer(timer);
 	do
 	{
 		eg.searchForEvents();
@@ -49,8 +68,11 @@ int main(int argc, char ** argv)
 			state_machine.dispatch(eg.getNextEvent());
 		}
 	}while(eg.isNotQuit);
-*/
+
 	//destruyo todo lo que cree
+	
+	al_destroy_display(display);
+	
 	return 0;
 }
 
@@ -101,4 +123,33 @@ bool tryConection(vector<string> & ipsVector, int maquinaPropia, maquina * p2Mym
 	}
 	ret = true;
 	return ret;
+}
+
+bool initAll(ALLEGRO_DISPLAY * display, ALLEGRO_TIMER * timer)
+{
+	if (!al_init()) {
+		return false;
+	}
+
+	display = al_create_display(1920, 696);
+
+	if (display == nullptr) {
+		return false;
+	}
+
+	if (!al_install_keyboard())
+	{
+		return false;
+	}
+
+	timer = al_create_timer(1.0 / FPS);
+	if (!timer) {
+		return false;
+	}
+
+	if (!al_init_image_addon()) { // ADDON necesario para manejo(no olvidar el freno de mano) de imagenes
+		return false;
+	}
+
+	return true;
 }
