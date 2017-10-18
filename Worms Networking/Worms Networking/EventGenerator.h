@@ -17,29 +17,51 @@ class Graphic
 {
 	int hay_que_agregarlo;
 };
+class BoostResources
+{
+public:
+	boost::asio::ip::tcp::socket* socket;
+};
+
+struct WormInfo
+{
+	uint32_t posx;
+	uint32_t posy;
+	char wormNumber;
+	char frame;
+	char orientation;
+	char state;
+};
+
+std::list<WormInfo> wormsList;
 
 class EventGenerator
 {
 public:
-	EventGenerator(Worm& worm, Graphic& graficos);
+	EventGenerator(Worm * worm, Graphic * graficos, BoostResources * connection);
 	~EventGenerator();
 	void searchForEvents();
 	bool hayEvento();
 	bool isNotQuit();
 	GenericEvent getNextEvent();
+	std::list<WormInfo>::iterator getListIterator();
+
 private:
 	void shape(ALLEGRO_EVENT ev);
 	void shape(char * buf, unsigned int cant);
+	bool DetectLittleEndian(void);
 
 	ALLEGRO_EVENT_QUEUE * eventQueue;
 	ALLEGRO_EVENT evento;
 
 	char buffer[512];
 	bool quit;
-	std::list<GenericEvent> eventList;
 
-	boost::asio::io_service*  IO_handler;
-	boost::asio::ip::tcp::socket* socket_forServer;
-	boost::asio::ip::tcp::acceptor* server_acceptor;
+	std::list<GenericEvent> eventList;
+	std::list<WormInfo> wormsList;
+
+	Worm * worm_;
+	Graphic * graficos_;
+	boost::asio::ip::tcp::socket* socket_; //lo necesario para poder leer y escribir
 };
 
