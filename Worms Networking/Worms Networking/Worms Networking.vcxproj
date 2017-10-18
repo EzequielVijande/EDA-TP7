@@ -116,8 +116,10 @@
     <ClInclude Include="EventGenerator.h" />
     <ClInclude Include="FSM.h" />
     <ClInclude Include="Output.h" />
+    <ClInclude Include="RefreshEvent.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="WormEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />

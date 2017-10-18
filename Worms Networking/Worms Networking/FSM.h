@@ -4,6 +4,8 @@
 
 #include "Event.h"
 #include "State.h"
+#include "WormEvent.h"
+#include "RefreshEvent.h"
 
 class fsm
 {
