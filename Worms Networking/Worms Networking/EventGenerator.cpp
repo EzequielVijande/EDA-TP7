@@ -80,7 +80,7 @@ std::list<WormInfo>::iterator EventGenerator::getListIterator()
 		std::list<WormInfo>::iterator it;
 		return it;
 	}
-enum {ioEvent,WormEvent};
+enum {ioEvent,WormEventT};
 void EventGenerator::shape(ALLEGRO_EVENT ev)
 {
 	int type;
@@ -104,17 +104,17 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 			case P1_LEFT:
 				events.SetEvent(PRESS_MOVE);
 				events.SetUd(P1_LEFT);
-				type = WormEvent;
+				type = WormEventT;
 				break;
 			case P1_RIGHT:
 				events.SetEvent(PRESS_MOVE);
 				events.SetUd(P1_RIGHT);
-				type = WormEvent;
+				type = WormEventT;
 				break;
 			case P1_UP:
 				events.SetEvent(PRESS_JUMP);
 				events.SetUd(P1_UP);
-				type = WormEvent;
+				type = WormEventT;
 				break;
 			}
 			break;
@@ -124,23 +124,33 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 			case P1_LEFT:
 				events.SetEvent(RELEASE_MOVE);
 				events.SetUd(P1_LEFT);
-				type = WormEvent;
+				type = WormEventT;
 				break;
 			case P1_RIGHT:
 				events.SetEvent(RELEASE_MOVE);
 				events.SetUd(P1_RIGHT);
-				type = WormEvent;
+				type = WormEventT;
 				break;
 			case P1_UP:
 				events.SetEvent(RELEASE_JUMP);
 				events.SetUd(P1_UP);
-				type = WormEvent;
+				type = WormEventT;
 				break;
 			}
 			break;
 	}
-	//FALTA:: que segun el type se cree una clase del evento especifio y despues se pushee a tarves de un generic event a la lista 
-	eventList.push_back(events);
+	if (type == ioEvent)
+	{
+		RefreshEvent evento1(events); //hacer constructor
+		GenericEvent * genEv = &evento1;
+		eventList.push_back(*genEv);
+	}
+	else if (type == WormEventT)
+	{
+		WormEvent evento2(events); //hacer construcotr
+		GenericEvent * genEv = &evento2;
+		eventList.push_back(*genEv);
+	}
 }
 
 
@@ -201,10 +211,10 @@ void EventGenerator::shape(char * buf, unsigned int cant)
 	}
 	else if (buf[0] == 'Q')
 	{
-		// se recibe package de error
+		// se recibe package de quit
 		quit = true;
 	}
-	else if (buf == 'E')
+	else if (buf[0] == 'E')
 	{
 		//se recibe package de error
 	}

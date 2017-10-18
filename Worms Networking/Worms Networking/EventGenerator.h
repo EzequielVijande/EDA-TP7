@@ -5,7 +5,8 @@
 #include "allegro5\allegro.h"
 #include "boost\asio.hpp"
 #include "Event.h"
-#include "Output.h" //Lo de graphics iria en este header
+#include "WormEvent.h"
+#include "RefreshEvent.h"
 
 
 #define P1_LEFT		ALLEGRO_KEY_LEFT
