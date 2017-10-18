@@ -2,6 +2,10 @@
 #define _H_WAITINGJUMPSTATE
 
 #include "GenericState.h"
+#include "WaitingMoveState.h"
+#include "MoveState.h"
+#include "IdleState.h"
+#include "JumpingState.h"
 
 class  WaitingJumpState : public GenericState //Representa el intervalo entre el momento que se presiona
 {											  //la tecla para iniciar el salto y el momento en el que inicia el salto.

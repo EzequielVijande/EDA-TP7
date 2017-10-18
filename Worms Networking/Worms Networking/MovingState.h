@@ -2,6 +2,10 @@
 #define _H_MOVINGSTATE
 
 #include "GenericState.h"
+#include "WaitingMoveState.h"
+#include "WaitingJumpState.h"
+#include "IdleState.h"
+#include "JumpingState.h"
 
 class  MovingState : public GenericState
 {
