@@ -6,6 +6,12 @@
 #include "State.h"
 #include "WormEvent.h"
 #include "RefreshEvent.h"
+#include "IdleState.h"
+#include "MovingState.h"
+#include "JumpingState.h"
+#include "WaitingJumpState.h"
+#include "WaitingMoveState.h"
+
 
 class fsm
 {

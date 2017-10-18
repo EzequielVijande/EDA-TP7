@@ -5,25 +5,45 @@ JumpingState::~JumpingState() {};
 
 GenericState* JumpingState::PressMove(WormEvent* ev)
 {
-	return ev;
+	//Falta llamar a las funciones de worm
+	//desde el worm que se recibe en el evento.
+
+	JumpingState* prox_estado = new JumpingState;
+	return prox_estado;
 }
 
 GenericState* JumpingState::ReleaseMove(WormEvent*ev)
 {
-	return ev;
+	//Falta llamar a las funciones de worm
+	//desde el worm que se recibe en el evento.
+
+	JumpingState* prox_estado = new JumpingState;
+	return prox_estado;
 }
 
 GenericState* JumpingState::PressJump(WormEvent*ev)
 {
-	return ev;
+	//Falta llamar a las funciones de worm
+	//desde el worm que se recibe en el evento.
+
+	JumpingState* prox_estado = new JumpingState;
+	return prox_estado;
 }
 
 GenericState* JumpingState::ReleaseJump(WormEvent*ev)
 {
-	return ev;
+	//Falta llamar a las funciones de worm
+	//desde el worm que se recibe en el evento.
+
+	JumpingState* prox_estado = new JumpingState;
+	return prox_estado;
 }
 
 GenericState* JumpingState::NoEvent(WormEvent*ev)
 {
-	return ev;
+	//Falta llamar a las funciones de worm
+	//desde el worm que se recibe en el evento.
+
+	JumpingState* prox_estado = new JumpingState;
+	return prox_estado;
 }

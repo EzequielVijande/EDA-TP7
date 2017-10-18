@@ -134,8 +134,13 @@
     <ClCompile Include="EventGenerator.cpp" />
     <ClCompile Include="FSM.cpp" />
     <ClCompile Include="IdleState.cpp" />
+    <ClCompile Include="JumpingState.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MovingState.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="Server.cpp" />
+    <ClCompile Include="WaitingJumpState.cpp" />
+    <ClCompile Include="WaitingMoveState.cpp" />
     <ClCompile Include="Worm.cpp" />
   </ItemGroup>
   <ItemGroup>

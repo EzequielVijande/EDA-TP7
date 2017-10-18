@@ -12,8 +12,8 @@ public:
 	virtual GenericState* ReleaseMove(WormEvent*ev) = 0;
 	virtual GenericState* PressJump(WormEvent*ev) = 0;
 	virtual GenericState* ReleaseJump(WormEvent*ev) = 0;
-	virtual	GenericState* Refresh(WormEvent*ev) = 0;
-	virtual	GenericState* Quit(WormEvent*ev) = 0;
+	virtual	GenericState* Refresh(RefreshEvent*ev) = 0;
+	virtual	GenericState* Quit(RefreshEvent*ev) = 0;
 	virtual	GenericState* NoEvent(WormEvent*ev) = 0;
 };
 

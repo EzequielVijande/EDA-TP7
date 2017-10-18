@@ -19,6 +19,8 @@ public:
 	virtual	GenericState* Refresh(WormEvent*ev);
 	virtual	GenericState* Quit(WormEvent*ev);
 	virtual	GenericState* NoEvent(WormEvent*ev);
+private:
+	
 
 };
 

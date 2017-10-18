@@ -2,7 +2,7 @@
 
 	fsm::fsm()
 { 
-		estado = new IdleState(); //Pone la FSM en su estado inicial.
+		estado = new IdleState; //Pone la FSM en su estado inicial.
 		prox_estado = nullptr;
 }
 
