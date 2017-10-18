@@ -13,6 +13,7 @@ public:
 	bool read_error();
 	void set_bufClen(unsigned int d);
 	char* get_buf();
+	boost::asio::ip::tcp::socket* getSocket(void);
 private:
 	boost::asio::io_service* IO_handler;
 	boost::asio::ip::tcp::socket* socket_forClient;

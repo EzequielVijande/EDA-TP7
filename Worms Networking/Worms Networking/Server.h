@@ -15,6 +15,7 @@ public:
 	void set_bufSlen(unsigned int d);
 	void close_serverAcceptor();
 	char* get_buf();
+	boost::asio::ip::tcp::socket* getSocket(void);
 private:
 	boost::asio::io_service*  IO_handler;
 	boost::asio::ip::tcp::socket* socket_forServer;

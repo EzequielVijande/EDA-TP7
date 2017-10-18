@@ -1,7 +1,7 @@
 #include "EventGenerator.h"
 
 
-EventGenerator::EventGenerator(Worm * worm, graphic_movement * graficos, BoostResources * connection)
+EventGenerator::EventGenerator(Worm * worm, graphic_movement * graficos, maquina * connection)
 {
 	quit = false;
 	for (int i = 0; i < 512; i++)
@@ -11,7 +11,7 @@ EventGenerator::EventGenerator(Worm * worm, graphic_movement * graficos, BoostRe
 
 	worm_ = worm;
 	graficos_ = graficos;
-	socket_ = connection->socket;
+	socket_ = connection->getSocket();
 }
 
 EventGenerator::~EventGenerator()

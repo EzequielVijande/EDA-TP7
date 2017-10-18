@@ -98,3 +98,7 @@ char * client::get_buf()
 {
 	return buf;
 }
+boost::asio::ip::tcp::socket* getSocket(void)
+{
+	return socket_forClient;
+}
