@@ -32,8 +32,6 @@ int main(int argc, char ** argv)
 		//ERROR
 	}
 
-	//al_start_timer(timer);
-
 	graphic_movement Graphics;
 
 	Graphics.init();
@@ -43,9 +41,10 @@ int main(int argc, char ** argv)
 	ipsHandler.extractLines(ipsVector);
 	int maquinaPropia = 0, cantMaquinas = (int)ipsVector.size();
 
+	maquina * p2Mymaquina = nullptr;
+
 	if (parserCmd(ipsVector, cantMaquinas, maquinaPropia, argc, argv)) //luego del parser, ya se que maquina soy
 	{
-		maquina * p2Mymaquina = nullptr;
 
 		if (tryConection(ipsVector, maquinaPropia, p2Mymaquina))
 		{
@@ -58,9 +57,9 @@ int main(int argc, char ** argv)
 	}
 	fsm state_machine;
 	Worm worms(maquinaPropia);
-/*
-	EventGenerator eg(worms,Graphics); // se le pasan cosas que sobreviven al dispatcher
+	EventGenerator eg(&worms,&Graphics,p2Mymaquina); // se le pasan cosas que sobreviven al dispatcher
 
+	al_start_timer(timer);
 	do
 	{
 		eg.searchForEvents();
@@ -69,7 +68,7 @@ int main(int argc, char ** argv)
 			state_machine.dispatch(eg.getNextEvent());
 		}
 	}while(eg.isNotQuit);
-*/
+
 	//destruyo todo lo que cree
 	
 	al_destroy_display(display);
