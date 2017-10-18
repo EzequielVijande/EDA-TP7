@@ -6,6 +6,8 @@
 class RefreshEvent : public GenericEvent
 {
 public:
+	RefreshEvent();
+	RefreshEvent(GenericEvent evnt);
 	graphic_movement* p2graphic;
 	Worm* p2worm;
 	std::list<WormInfo>::iterator it;
@@ -17,3 +19,4 @@ public:
 };
 
 #endif //REFRESH_EVENT
+
