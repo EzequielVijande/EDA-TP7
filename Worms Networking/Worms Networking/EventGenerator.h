@@ -5,7 +5,11 @@
 #include "allegro5\allegro.h"
 #include "boost\asio.hpp"
 #include "Event.h"
-#include "Output.h" //Lo de graphics iria en este header
+#include "WormEvent.h"
+#include "RefreshEvent.h"
+#include "graphic_movement.h"
+//#include "Client.h"
+//#include "Server.h"
 
 
 #define P1_LEFT		ALLEGRO_KEY_LEFT
@@ -13,10 +17,6 @@
 #define P1_UP		ALLEGRO_KEY_UP
 
 
-class Graphic
-{
-	int hay_que_agregarlo;
-};
 class BoostResources
 {
 public:
@@ -38,7 +38,7 @@ std::list<WormInfo> wormsList;
 class EventGenerator
 {
 public:
-	EventGenerator(Worm * worm, Graphic * graficos, BoostResources * connection);
+	EventGenerator(Worm * worm, graphic_movement * graficos, BoostResources/*maquina*/ * connection);
 	~EventGenerator();
 	void searchForEvents();
 	bool hayEvento();
