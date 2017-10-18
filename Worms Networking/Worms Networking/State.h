@@ -4,6 +4,8 @@
 #include "WormEvent.h"
 #include "RefreshEvent.h"
 
+class RefreshEvent; //foward declaration para que no haya problemas de referencia circular
+
 class GenericState
 {
 public:
