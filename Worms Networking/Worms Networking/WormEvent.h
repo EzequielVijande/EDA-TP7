@@ -7,6 +7,8 @@ class WormEvent : public GenericEvent
 
 public:
 	Worm* worm;
+	WormEvent();
+	WormEvent(GenericEvent evnt);
 };
 
 

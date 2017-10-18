@@ -1,7 +1,7 @@
 #include "EventGenerator.h"
 
 
-EventGenerator::EventGenerator(Worm * worm, Graphic * graficos, BoostResources * connection)
+EventGenerator::EventGenerator(Worm * worm, graphic_movement * graficos, BoostResources * connection)
 {
 	quit = false;
 	for (int i = 0; i < 512; i++)
@@ -12,9 +12,6 @@ EventGenerator::EventGenerator(Worm * worm, Graphic * graficos, BoostResources *
 	worm_ = worm;
 	graficos_ = graficos;
 	socket_ = connection->socket;
-
-
-	//inicializar todos los datos miembros relacionados a worms y graphics;
 }
 
 EventGenerator::~EventGenerator()
@@ -147,7 +144,7 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 	}
 	else if (type == WormEventT)
 	{
-		WormEvent evento2(events); //hacer construcotr
+		WormEvent evento2(events); //hacer constructor 
 		GenericEvent * genEv = &evento2;
 		eventList.push_back(*genEv);
 	}
@@ -185,7 +182,7 @@ void EventGenerator::shape(char * buf, unsigned int cant)
 			newInfo.posy = a[1];
 			if (wormsList.size() == 0)
 			{
-				wormsList.push_back(newInfo); // si todavi ano hay ningun worm se agregar sin verficiacion
+				wormsList.push_back(newInfo); // si todavia no hay ningun worm se agregar sin verficiacion
 			}
 			else
 			{

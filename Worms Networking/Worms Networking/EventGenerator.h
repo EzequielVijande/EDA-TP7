@@ -7,6 +7,9 @@
 #include "Event.h"
 #include "WormEvent.h"
 #include "RefreshEvent.h"
+#include "graphic_movement.h"
+//#include "Client.h"
+//#include "Server.h"
 
 
 #define P1_LEFT		ALLEGRO_KEY_LEFT
@@ -14,6 +17,11 @@
 #define P1_UP		ALLEGRO_KEY_UP
 
 
+class BoostResources
+{
+public:
+	boost::asio::ip::tcp::socket* socket;
+};
 
 struct WormInfo
 {
@@ -30,7 +38,7 @@ std::list<WormInfo> wormsList;
 class EventGenerator
 {
 public:
-	EventGenerator(Worm * worm, Graphic * graficos, BoostResources * connection);
+	EventGenerator(Worm * worm, graphic_movement * graficos, BoostResources/*maquina*/ * connection);
 	~EventGenerator();
 	void searchForEvents();
 	bool hayEvento();
