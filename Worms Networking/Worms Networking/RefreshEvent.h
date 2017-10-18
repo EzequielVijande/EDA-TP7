@@ -1,12 +1,14 @@
 #ifndef REFRESH_EVENT
 #define REFRESH_EVENT
 #include "Event.h"
-#include "Output.h"
+#include "graphic_movement.h"
 
 class RefreshEvent : public GenericEvent
 {
+public:
+	
 private:
-	Graphic* viewer;
+	graphic_movement * viewer;
 
 	//Datos de Boost
 	char buf[512];

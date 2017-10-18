@@ -27,7 +27,8 @@ void fsm:: dispatch(GenericEvent* ev)
 			break;
 
 		case REFRESH:
-			prox_estado = estado->Refresh((RefreshEvent*)ev);
+			prox_estado = estado; // REFRESH NO CAMBIA EL ESTADO.
+			estado->Refresh((RefreshEvent*)ev);
 			break;
 		case QUIT:
 			prox_estado = estado->Quit((RefreshEvent*)ev);

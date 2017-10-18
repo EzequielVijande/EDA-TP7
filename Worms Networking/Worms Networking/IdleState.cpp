@@ -24,10 +24,7 @@ GenericState* ReleaseJump(WormEvent*ev)
 	IdleState* prox_estado = new IdleState;
 	return prox_estado;
 }
-GenericState* Refresh(WormEvent*ev)
-{
-	//Queda ver bien como hacer esta cuando ya este el output bien definido
-}
+
 GenericState* Quit(WormEvent*ev)
 {
 	//Hay que mandar el paquete avisando que se finaliza el programa
