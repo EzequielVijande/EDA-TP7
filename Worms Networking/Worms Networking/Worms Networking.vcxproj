@@ -140,6 +140,7 @@
     <ClCompile Include="JumpingState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="maquina.cpp" />
+    <ClCompile Include="MovingState.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="WaitingMoveState.cpp" />

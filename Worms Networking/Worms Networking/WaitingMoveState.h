@@ -2,7 +2,6 @@
 #define _H_WAITINGMOVESTATE
 
 #include "GenericState.h"
-#include "WaitingJumpState.h"
 #include "MoveState.h"
 #include "IdleState.h"
 #include "JumpingState.h"
