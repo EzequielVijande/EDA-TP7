@@ -138,15 +138,23 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 	}
 	if (type == ioEvent)
 	{
-		RefreshEvent evento1(events); //hacer constructor
+		RefreshEvent evento1(events);
 		GenericEvent * genEv = &evento1;
+		evento1.p2graphic = graficos_;
+		evento1.p2worm = worm_;
+		evento1.worm_number = wormsList.size();
+		std::list<WormInfo>::iterator ite = wormsList.begin();
+		evento1.it = ite;
+		evento1.socket_ = socket_;
 		eventList.push_back(*genEv);
 	}
 	else if (type == WormEventT)
 	{
-		WormEvent evento2(events); //hacer constructor 
+		WormEvent evento2(events);
 		GenericEvent * genEv = &evento2;
+		evento2.worm = worm_;
 		eventList.push_back(*genEv);
+
 	}
 }
 
