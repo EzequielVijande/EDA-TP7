@@ -5,6 +5,10 @@
 #include "Client.h"
 #include "fileHandler.h"
 #include "fsm.h"
+#include <allegro5\allegro_image.h>
+
+const float FPS = 50.0;
+
 //#include "Graphics.h"
 
 #define DEF_PORT 12345
@@ -14,9 +18,25 @@ int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia
 
 bool tryConection(vector<string> & ipsVector, int maquinaPropia, maquina * p2Mymaquina);
 
+bool initAll(ALLEGRO_DISPLAY * display, ALLEGRO_TIMER * timer);
+
 int main(int argc, char ** argv)
 {
 	//inicilizacion de allegro y boost
+	
+	ALLEGRO_DISPLAY * display = nullptr;
+	ALLEGRO_TIMER * timer = nullptr;
+
+	if (!initAll(display, timer))
+	{
+		//ERROR
+	}
+
+	//al_start_timer(timer);
+
+	graphic_movement Graphics;
+
+	Graphics.init();
 
 	fileHandler ipsHandler("ips.txt", 'r'); // Abro el archivo de las ips en modo escritura
 	vector <string> ipsVector;
@@ -51,6 +71,9 @@ int main(int argc, char ** argv)
 	}while(eg.isNotQuit);
 */
 	//destruyo todo lo que cree
+	
+	al_destroy_display(display);
+	
 	return 0;
 }
 
@@ -101,4 +124,33 @@ bool tryConection(vector<string> & ipsVector, int maquinaPropia, maquina * p2Mym
 	}
 	ret = true;
 	return ret;
+}
+
+bool initAll(ALLEGRO_DISPLAY * display, ALLEGRO_TIMER * timer)
+{
+	if (!al_init()) {
+		return false;
+	}
+
+	display = al_create_display(1920, 696);
+
+	if (display == nullptr) {
+		return false;
+	}
+
+	if (!al_install_keyboard())
+	{
+		return false;
+	}
+
+	timer = al_create_timer(1.0 / FPS);
+	if (!timer) {
+		return false;
+	}
+
+	if (!al_init_image_addon()) { // ADDON necesario para manejo(no olvidar el freno de mano) de imagenes
+		return false;
+	}
+
+	return true;
 }
