@@ -15,8 +15,6 @@ public:
 	virtual GenericState* ReleaseMove(WormEvent*ev);
 	virtual GenericState* PressJump(WormEvent*ev);
 	virtual GenericState* ReleaseJump(WormEvent*ev);
-	virtual	GenericState* Refresh(RefreshEvent*ev); //Refresh la defino en el cpp de GenericState ya que es comun a muchas de sus clases derivadas.
-	virtual	GenericState* Quit(RefreshEvent*ev);
 };
 
 

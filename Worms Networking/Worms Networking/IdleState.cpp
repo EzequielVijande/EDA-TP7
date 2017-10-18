@@ -27,16 +27,3 @@ GenericState* IdleState::PressJump(WormEvent*ev)
 	WaitingJumpState* prox_estado = new WaitingJumpState;
 	return prox_estado;
 }
-GenericState* IdleState::ReleaseJump(WormEvent*ev)
-{
-	IdleState* prox_estado = new IdleState;
-	return prox_estado;
-}
-
-GenericState* IdleState::Quit(RefreshEvent*ev)
-{
-	//Hay que mandar el paquete avisando que se finaliza el programa
-	//desde los recursos en el evento recibido.
-	IdleState* prox_estado = new IdleState;
-	return prox_estado;
-}
