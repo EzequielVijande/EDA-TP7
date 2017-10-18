@@ -18,6 +18,22 @@ Worm::Worm()
 	state = IDLE;
 	uData = 0;
 	key_down = false;
+
+}
+
+Worm::Worm(unsigned int nrodeserie_)
+{
+	pos.x = xMin + (double)(rand()) / ((double)(RAND_MAX / (xMax - xMin)));
+	for (; pos.x > map_xlimit_der; pos.x--)
+	{
+	}
+	sentido = (bool)((int)(pos.x) % 2);
+	pos.y = 616;
+	frameCount = 0;
+	state = IDLE;
+	uData = 0;
+	key_down = false;
+	nrodeserie = nrodeserie_;
 }
 
 void Worm::startMoving(void)
@@ -276,4 +292,9 @@ unsigned int Worm::getFrameCount(void)
 bool Worm::getSentido(void)
 {
 	return sentido;
+}
+
+unsigned int Worm::getNumber()
+{
+	return nrodeserie;
 }

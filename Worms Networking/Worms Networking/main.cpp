@@ -4,7 +4,7 @@
 #include "Server.h"
 #include "Client.h"
 #include "fileHandler.h"
-//#include "fsm.h"
+#include "fsm.h"
 //#include "Graphics.h"
 
 #define DEF_PORT 12345
@@ -36,10 +36,9 @@ int main(int argc, char ** argv)
 			cout << "Error al intentar conexión en red, verifique su conexión a la red..." << endl;
 		}
 	}
-
-/*
 	fsm state_machine;
-	Worm worms;
+	Worm worms(maquinaPropia);
+/*
 	EventGenerator eg(worms,Graphics); // se le pasan cosas que sobreviven al dispatcher
 
 	do
