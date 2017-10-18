@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Client.h"
 #include <iostream>
 
@@ -98,7 +97,8 @@ char * client::get_buf()
 {
 	return buf;
 }
-boost::asio::ip::tcp::socket* getSocket(void)
+
+boost::asio::ip::tcp::socket* client::getSocket(void)
 {
 	return socket_forClient;
 }

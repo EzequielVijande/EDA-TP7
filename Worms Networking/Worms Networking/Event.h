@@ -1,5 +1,4 @@
-#ifndef EVENT_H
-#define EVENT_H
+#pragma once
 
 //Modulo que contiene la estructura general de un evento.
 
@@ -21,5 +20,3 @@ private:
 	
 
 };
-
-#endif //EVENT_H

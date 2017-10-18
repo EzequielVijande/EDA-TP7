@@ -1,5 +1,4 @@
-#ifndef _H_MOVINGSTATE
-#define _H_MOVINGSTATE
+#pragma once
 
 #include "State.h"
 #include "WaitingMoveState.h"
@@ -16,5 +15,3 @@ public:
 	virtual GenericState* PressJump(WormEvent*ev);
 
 };
-
-#endif

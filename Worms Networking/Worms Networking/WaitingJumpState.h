@@ -1,9 +1,8 @@
-#ifndef _H_WAITINGJUMPSTATE
-#define _H_WAITINGJUMPSTATE
+#pragma once
 
 #include "State.h"
 #include "WaitingMoveState.h"
-#include "MoveState.h"
+#include "MovingState.h"
 #include "IdleState.h"
 #include "JumpingState.h"
 
@@ -15,8 +14,6 @@ public:
 	virtual GenericState* PressMove(WormEvent* ev);
 	virtual GenericState* PressJump(WormEvent*ev);
 	virtual GenericState* ReleaseJump(WormEvent*ev);
+	virtual GenericState* ReleaseMove(WormEvent*ev);
 
 };
-
-#endif // !_H_WAITINGJUMPSTATE
-

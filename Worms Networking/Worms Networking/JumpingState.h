@@ -1,5 +1,4 @@
-#ifndef _H_JUMPINGSATE
-#define _H_JUMPINGSTATE
+#pragma once
 
 #include "State.h"
 #include "WaitingMoveState.h"
@@ -18,4 +17,3 @@ public:
 
 };
 
-#endif // !_H_JUMPINGSATE

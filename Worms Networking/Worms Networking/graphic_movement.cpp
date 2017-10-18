@@ -1,5 +1,4 @@
 #include "graphic_movement.h"
-
 #include <iostream>
 
 
@@ -119,7 +118,7 @@ void graphic_movement::do_jumping_step(Worm &worm) {
 
 }
 
-void do_jumping_step(WormInfo & worm)
+void graphic_movement::do_jumping_step(WormInfo & worm)
 {
 	switch (worm.state) {
 	case IDLE:
@@ -201,7 +200,7 @@ void graphic_movement::do_walking_step(Worm &worm) {
 	}
 }
 
-void do_walking_step(WormInfo & worm)
+void graphic_movement::do_walking_step(WormInfo & worm)
 {
 	unsigned int aux = worm.state;
 

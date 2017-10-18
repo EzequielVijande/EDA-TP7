@@ -1,5 +1,5 @@
-#ifndef REFRESH_EVENT
-#define REFRESH_EVENT
+#pragma once
+
 #include "Event.h"
 #include "graphic_movement.h"
 #include "EventGenerator.h"
@@ -18,5 +18,4 @@ public:
 	boost::asio::ip::tcp::socket* socket_;
 };
 
-#endif //REFRESH_EVENT
 

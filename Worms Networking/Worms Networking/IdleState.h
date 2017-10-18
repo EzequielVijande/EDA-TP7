@@ -1,5 +1,4 @@
-#ifndef _H_IDLESTATE
-#define _H_IDLESTATE
+#pragma once
 
 #include "State.h"
 #include "JumpingState.h"
@@ -20,4 +19,3 @@ private:
 
 };
 
-#endif

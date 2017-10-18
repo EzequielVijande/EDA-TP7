@@ -73,7 +73,7 @@ buffer[5]-buffer[8] ---> uint32_t de posx del Worm
 buffer[9]-buffer[12] --> uint32_t de posy del Worm
 */
 
-char * createWormPackage(Worm * p2worm)
+char * GenericState::createWormPackage(Worm * p2worm)
 {
 	char * package = new char [13]; //13: tamaño del wormPackage
 	package[0] = 'W';

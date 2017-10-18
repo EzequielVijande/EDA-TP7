@@ -6,8 +6,9 @@
 		prox_estado = nullptr;
 }
 
-void fsm:: dispatch(GenericEvent* ev)
+void fsm:: dispatch(GenericEvent evt)
 {
+	 GenericEvent *ev = &evt;
 	switch (ev->GetEvent())
 	{
 		case PRESS_MOVE:

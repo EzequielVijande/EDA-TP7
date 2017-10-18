@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "fileHandler.h"
 #include <string>
 #include <iostream>

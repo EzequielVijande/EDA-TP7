@@ -1,8 +1,7 @@
-#ifndef _H_WAITINGMOVESTATE
-#define _H_WAITINGMOVESTATE
+#pragma once
 
-#include "GenericState.h"
-#include "MoveState.h"
+#include "State.h"
+#include "MovingState.h"
 #include "IdleState.h"
 #include "JumpingState.h"
 
@@ -16,6 +15,4 @@ public:									      //efectivamente se inicia el movimiento.
 	virtual GenericState* PressJump(WormEvent*ev);
 
 };
-
-#endif // !_H_WAITINGMOVESTATE
 

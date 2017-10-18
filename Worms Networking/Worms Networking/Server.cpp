@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Server.h"
 #include <iostream>
 
@@ -102,7 +101,8 @@ char * server::get_buf()
 {
 	return buf;
 }
-boost::asio::ip::tcp::socket* getSocket(void)
+
+boost::asio::ip::tcp::socket* server:: getSocket(void)
 {
 	return socket_forServer;
 }

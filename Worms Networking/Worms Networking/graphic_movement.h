@@ -2,16 +2,7 @@
 #include <allegro5\allegro5.h>
 #include <string>
 #include "Worm.h"
-
-struct WormInfo
-{
-	uint32_t posx;
-	uint32_t posy;
-	char wormNumber;
-	char frame;
-	char orientation;
-	char state;
-};
+#include "WormInfo.h"
 
 #define PACKAGE_LEN 7 //tamaño del campo de datos del package del Worm.
 

@@ -17,8 +17,8 @@ GenericState* JumpingState::PressMove(WormEvent* ev)
 	else
 	{
 		JumpingState* prox_estado = new JumpingState; //Si no termino el salto, ignora el input.
+		return prox_estado;
 	}
-	
 }
 
 

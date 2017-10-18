@@ -4,7 +4,7 @@
 #include "Server.h"
 #include "Client.h"
 #include "fileHandler.h"
-#include "fsm.h"
+#include "FSM.h"
 #include <allegro5\allegro_image.h>
 
 const float FPS = 50.0;
@@ -67,7 +67,7 @@ int main(int argc, char ** argv)
 		{
 			state_machine.dispatch(eg.getNextEvent());
 		}
-	}while(eg.isNotQuit);
+	}while(eg.isNotQuit());
 
 	//destruyo todo lo que cree
 	

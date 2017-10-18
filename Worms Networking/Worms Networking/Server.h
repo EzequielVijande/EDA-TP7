@@ -1,4 +1,4 @@
-
+#pragma once
 #include "maquina.h"
 
 #include <boost/asio.hpp>

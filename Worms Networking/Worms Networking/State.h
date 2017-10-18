@@ -1,6 +1,4 @@
-
-#ifndef STATE_H
-#define STATE_H
+#pragma once
 
 //Modulo que contiene todos los estados posibles para la FSM.
 #include "WormEvent.h"
@@ -20,6 +18,3 @@ public:
 private:
 	char * createWormPackage(Worm * p2worm);
 };
-
-
-#endif //STATE_H

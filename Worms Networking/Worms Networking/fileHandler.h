@@ -1,5 +1,4 @@
-#ifndef FILE_HANDLER_H_ //FILE_HANDLER_H_ !
-#define FILE_HANDLER_H_
+#pragma once
 #include <fstream>
 #include <vector>
 
@@ -27,7 +26,6 @@ private:
 	std::ifstream file;
 
 };
-#endif // FILE_HANDLER_H_ !
 
 
 
