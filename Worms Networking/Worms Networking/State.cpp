@@ -1,6 +1,15 @@
 #include "State.h"
 
 
+GenericState::GenericState()
+{
+
+}
+GenericState:: ~GenericState()
+{
+
+}
+
 GenericState* GenericState::PressMove(WormEvent* ev)
 {
 	return nullptr;
@@ -36,4 +45,10 @@ GenericState* GenericState::Refresh(RefreshEvent*ev)
 	}
 	al_flip_display();
 	return nullptr; //Como no cambia el estado devuelve nullptr.
+}
+
+GenericState* GenericState::Quit(RefreshEvent*ev)
+{
+	//Aca hay que emandar el paquete de Quit con boost
+	return nullptr;
 }

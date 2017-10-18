@@ -24,6 +24,6 @@ GenericState* IdleState::ReleaseMove(WormEvent*ev)
 GenericState* IdleState::PressJump(WormEvent*ev)
 {
 	(ev->worm)->startJumping();
-	WaitingJumpState* prox_estado = new WaitingJumpState;
+	JumpingState* prox_estado = new JumpingState;
 	return prox_estado;
 }

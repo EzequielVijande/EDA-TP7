@@ -15,8 +15,6 @@ public:									      //efectivamente se inicia el movimiento.
 	virtual GenericState* PressMove(WormEvent* ev);
 	virtual GenericState* ReleaseMove(WormEvent*ev);
 	virtual GenericState* PressJump(WormEvent*ev);
-	virtual GenericState* ReleaseJump(WormEvent*ev);
-	virtual	GenericState* Quit(RefreshEvent*ev);
 
 };
 

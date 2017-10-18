@@ -57,9 +57,6 @@
     <ClInclude Include="MovingState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WaitingJumpState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="WaitingMoveState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -101,19 +98,10 @@
     <ClCompile Include="JumpingState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WaitingJumpState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="WaitingMoveState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WormEvent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RefreshEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

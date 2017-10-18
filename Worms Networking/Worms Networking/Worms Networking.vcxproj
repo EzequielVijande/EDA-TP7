@@ -124,7 +124,6 @@
     <ClInclude Include="RefreshEvent.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="State.h" />
-    <ClInclude Include="WaitingJumpState.h" />
     <ClInclude Include="WaitingMoveState.h" />
     <ClInclude Include="Worm.h" />
     <ClInclude Include="WormEvent.h" />
@@ -141,7 +140,6 @@
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="State.cpp" />
-    <ClCompile Include="WaitingJumpState.cpp" />
     <ClCompile Include="WaitingMoveState.cpp" />
     <ClCompile Include="Worm.cpp" />
   </ItemGroup>

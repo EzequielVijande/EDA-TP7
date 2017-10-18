@@ -6,30 +6,37 @@ JumpingState::~JumpingState() {};
 
 GenericState* JumpingState::PressMove(WormEvent* ev)
 {
-	(ev->worm)->
-	//Falta llamar a las funciones de worm
-	//desde el worm que se recibe en el evento.
+	unsigned int current_frame = (ev->worm)->getFrameCount();
+	if (current_frame == LAST_JUMP_FRAME)
+	{
+		(ev->worm)->startMoving();
+		WaitingMoveState* prox_estado = new WaitingMoveState; //Si termino el salto pasa a monitor move
+		return prox_estado;
+	}
 
-	JumpingState* prox_estado = new JumpingState;
-	return prox_estado;
+	else
+	{
+		JumpingState* prox_estado = new JumpingState; //Si no termino el salto, ignora el input.
+	}
+	
 }
 
-GenericState* JumpingState::ReleaseMove(WormEvent*ev)
-{
-	//Falta llamar a las funciones de worm
-	//desde el worm que se recibe en el evento.
-
-	JumpingState* prox_estado = new JumpingState;
-	return prox_estado;
-}
 
 GenericState* JumpingState::PressJump(WormEvent*ev)
 {
-	//Falta llamar a las funciones de worm
-	//desde el worm que se recibe en el evento.
+	unsigned int current_frame = (ev->worm)->getFrameCount();
+	if (current_frame == LAST_JUMP_FRAME)
+	{
+		(ev->worm)->startJumping();
+		JumpingState* prox_estado = new JumpingState; //Si termino el salto, inicia un  nuevo salto.
+		return prox_estado;
+	}
 
-	JumpingState* prox_estado = new JumpingState;
-	return prox_estado;
+	else
+	{
+		JumpingState* prox_estado = new JumpingState; //Si no termino el salto, ignora el input.
+		return prox_estado;
+	}
 }
 
 GenericState* JumpingState::ReleaseJump(WormEvent*ev)

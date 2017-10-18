@@ -5,7 +5,8 @@ WaitingJumpState::~WaitingJumpState() {};
 
 GenericState* WaitingJumpState::PressMove(WormEvent* ev)
 {
-	return ev;
+	WaitingMoveState* prox_estado = new JumpingState; //Si no termino el salto, ignora el input.
+	return prox_estado;
 }
 
 GenericState* WaitingJumpState::ReleaseMove(WormEvent*ev)
