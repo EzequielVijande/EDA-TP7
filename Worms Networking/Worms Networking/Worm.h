@@ -15,6 +15,7 @@ class Worm
 {
 public:
 	Worm();
+	Worm(unsigned int nrodeserie_);
 	void setKeys(char right_,char left_, char up_);
 	void startMoving(void);
 	void stopMoving(void);
@@ -30,6 +31,7 @@ public:
 	const bool left = false;
 	const bool right = true;
 	bool key_down;
+	unsigned int getNumber();
 
 
 private:
@@ -41,6 +43,7 @@ private:
 	unsigned int state;
 	const double xMax = 1212;
 	const double xMin = 707;
+	unsigned int nrodeserie;
 
 	struct data
 	{

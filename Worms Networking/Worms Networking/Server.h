@@ -1,65 +1,26 @@
-/*
-#pragma once
+
+#include "maquina.h"
 
 #include <boost/asio.hpp>
-#include <boost/function.hpp>
-#include <boost/bind.hpp>
-#include <iostream>
-#include <fstream>
-#include <string.h>
 
-using namespace std;
-
-#define PORT_S 12345
-#define YO	1
-#define ESCUCHO 2
-
-class Server
+class server : public maquina
 {
 public:
-	Server(int port);
-	~Server();
-
-	void listening();
-	bool noerrror();
-	bool itsMe(const char * mi_ip);
-	bool lastOne();
-	bool isSequenceOk(int seq);
-
-	void getSequence();
-	char * getNext();
-	char * getMsg();
-	bool getQuit();
-	char getAnim();
-	int getipsCount();
-	void closeSocket();
-
-	void setAnim(char anim);
-	void setTurno(int turno);
-	void setQuit(bool stat);
-
-	bool setBuf(int pos, char value);
-	bool setSeq(int pos, char value);
-	char getBuf(int pos);
-	char getSeq(int pos);
-
+	server(unsigned int port_num);
+	~server();
+	void conect_to_port();
+	void read_from_port();
+	void send_msg(char *bufS);
+	bool read_error();
+	void set_bufSlen(unsigned int d);
+	void close_serverAcceptor();
+	char* get_buf();
 private:
-	bool quit_status;
-	bool error_status;
-
-	int turno;
-	int ipsCount;
-
-	char animation;
-
-	char ipNext[16];
-	char buf[512];
-	char sequence[255];
-
 	boost::asio::io_service*  IO_handler;
 	boost::asio::ip::tcp::socket* socket_forServer;
 	boost::asio::ip::tcp::acceptor* server_acceptor;
-};
 
-void getUserSequence(Server& S);
-*/
+	char buf[WORM_PACKAGE_LEN];
+	unsigned int bufS_len;
+	bool error_flag;
+};

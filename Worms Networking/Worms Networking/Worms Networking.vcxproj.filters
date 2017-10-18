@@ -21,9 +21,6 @@
     <ClInclude Include="FSM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Output.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -57,17 +54,23 @@
     <ClInclude Include="MovingState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WaitingJumpState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="WaitingMoveState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="graphic_movement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fileHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="maquina.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Output.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EventGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -98,10 +101,19 @@
     <ClCompile Include="JumpingState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WaitingJumpState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="WaitingMoveState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fileHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="maquina.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
