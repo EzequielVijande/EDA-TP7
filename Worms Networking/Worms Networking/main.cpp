@@ -1,11 +1,11 @@
 #include <iostream>
+#include <allegro5\allegro_image.h>
 #include "EventGenerator.h"
 #include "Worm.h"
 #include "Server.h"
 #include "Client.h"
 #include "fileHandler.h"
 #include "FSM.h"
-#include <allegro5\allegro_image.h>
 
 const float FPS = 50.0;
 

@@ -2,6 +2,7 @@
 
 #include <list>
 #include "State.h"
+#include "Event.h"
 #include "Worm.h"
 #include "allegro5\allegro.h"
 #include "boost\asio.hpp"

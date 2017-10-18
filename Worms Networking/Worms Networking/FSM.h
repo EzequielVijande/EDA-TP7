@@ -16,7 +16,6 @@ class fsm
 {
 public:
 	fsm();
-	~fsm();
 	void dispatch(GenericEvent e); //Funcion que pasa los eventos a la maquina.
 								  //se encarga de pasar al proximo estado
 								  //y ejecutar la rutina correspondiente.

@@ -13,7 +13,7 @@ public:
 	virtual GenericState* PressJump(WormEvent*ev);
 	virtual GenericState* ReleaseJump(WormEvent*ev);
 	virtual GenericState* Refresh(RefreshEvent*ev);
-	virtual	GenericState* Quit(RefreshEvent*);
+	virtual	GenericState* Quit(RefreshEvent* ev);
 private:
 	char * createWormPackage(Worm * p2worm);
 };
