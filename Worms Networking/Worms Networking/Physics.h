@@ -21,7 +21,5 @@ public:
 	double getVelocity(void);
 	double getxMax(void);
 	double getxMin(void);
-	//void updateWalk(Worm& worm);
-	//void updateJump(Worm& worm);
 };
 
