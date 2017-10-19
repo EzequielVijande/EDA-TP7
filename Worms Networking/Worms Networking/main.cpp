@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_image.h>
 #include "EventGenerator.h"
@@ -28,7 +30,7 @@ bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& evqueue);
 int main(int argc, char ** argv)
 {
 	//inicilizacion de allegro y boost
-	
+	srand(time(NULL));
 	ALLEGRO_DISPLAY * display = nullptr;
 	ALLEGRO_TIMER * timer = nullptr;
 	ALLEGRO_EVENT_QUEUE* event_queue = nullptr;
@@ -74,6 +76,7 @@ int main(int argc, char ** argv)
 
 	fsm state_machine;
 	Worm worms(maquinaPropia);
+	worms.setKeys(P1_RIGHT, P1_LEFT, P1_UP);
 	EventGenerator eg(&worms,&Graphics,p2Mymaquina, event_queue); // se le pasan cosas que sobreviven al dispatcher
 
 	cout << "Timer inicializado" << endl;

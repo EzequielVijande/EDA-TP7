@@ -8,7 +8,9 @@ const float map_xlimit_izq =  680.0; //680.0
 
 Worm::Worm()
 {
-	pos.x = xMin + (double)(rand()) / ((double)(RAND_MAX / (xMax -xMin)));
+	//pos.x = xMin + (double)(rand()) / ((double)(RAND_MAX / (xMax -xMin)));
+	//pos.x = xMin + (double)(rand() % ((int)(xMax - xMin)));
+	pos.x = 500;
 	for (; pos.x > map_xlimit_der; pos.x--)
 	{
 	}
@@ -23,7 +25,7 @@ Worm::Worm()
 
 Worm::Worm(unsigned int nrodeserie_)
 {
-	pos.x = xMin + (double)(rand()) / ((double)(RAND_MAX / (xMax - xMin)));
+	pos.x = xMin + (double)(rand() % ((int)(xMax - xMin)));
 	for (; pos.x > map_xlimit_der; pos.x--)
 	{
 	}
@@ -203,7 +205,7 @@ void Worm::update(void)
 			if (frameCount == 50)
 			{
 				//state = IDLE;
-				frameCount = 0;
+				//frameCount = 0;
 				old_pos = pos;
 			}
 

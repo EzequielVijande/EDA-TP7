@@ -79,10 +79,12 @@ char * GenericState::createWormPackage(Worm * p2worm)
 	char * package = new char [13]; //13: tamaño del wormPackage
 	package[0] = 'W';
 	package[1] = p2worm->getNumber();
-	package[2] = p2worm->getSentido();
+	package[2] = p2worm->getState();
 	package[3] = (char)p2worm->getFrameCount();
-	package[5] = (uint32_t)p2worm->getPos().x;
-	package[9] = (uint32_t)p2worm->getPos().y;
+	uint32_t * aux1 = (uint32_t*)&package[5];
+	*aux1 = (uint32_t)p2worm->getPos().x;
+	uint32_t * aux2 = (uint32_t*)&package[9];
+	*aux2= (uint32_t)p2worm->getPos().y;
 
 	if (p2worm->getSentido()) //getSentido devuelve un bool
 	{

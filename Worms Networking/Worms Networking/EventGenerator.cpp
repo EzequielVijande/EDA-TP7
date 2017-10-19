@@ -109,46 +109,52 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 			case P1_LEFT:
 				events.SetEvent(PRESS_MOVE);
 				events.SetUd(P1_LEFT);
+				worm_->uData = P1_LEFT;
 				type = WormEventT;
 				break;
 			case P1_RIGHT:
 				events.SetEvent(PRESS_MOVE);
 				events.SetUd(P1_RIGHT);
+				worm_->uData = P1_RIGHT;
 				type = WormEventT;
 				break;
 			case P1_UP:
 				events.SetEvent(PRESS_JUMP);
 				events.SetUd(P1_UP);
+				worm_->uData = P1_UP;
 				type = WormEventT;
 				break;
 			default:
 			{
 				type = otherEvent;
 			}break;
-			}
+			}break;
 		case ALLEGRO_EVENT_KEY_UP:
 			switch (ev.keyboard.keycode)
 			{
 			case P1_LEFT:
 				events.SetEvent(RELEASE_MOVE);
 				events.SetUd(P1_LEFT);
+				worm_->uData = P1_LEFT;
 				type = WormEventT;
 				break;
 			case P1_RIGHT:
 				events.SetEvent(RELEASE_MOVE);
 				events.SetUd(P1_RIGHT);
+				worm_->uData = P1_RIGHT;
 				type = WormEventT;
 				break;
 			case P1_UP:
 				events.SetEvent(RELEASE_JUMP);
 				events.SetUd(P1_UP);
+				worm_->uData = P1_UP;
 				type = WormEventT;
 				break;
 			default:
 			{
 				type = otherEvent;
 			}break;
-			}
+			}break;
 		default:
 		{
 			type = otherEvent;
@@ -167,7 +173,6 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 	}
 	else if (type == WormEventT)
 	{
-		WormEvent evento2(events);
 		GenericEvent * genEv = new WormEvent (events);
 		((WormEvent*)genEv)->worm = worm_;
 		eventList.push_back(genEv);
@@ -220,10 +225,9 @@ void EventGenerator::shape(char * buf, unsigned int cant)
 				bool inserted = false;
 				for (int i = 0; i < wormsList.size(); i++, it++)
 				{
-					if (it->wormNumber = buf[1])
+					if (it->wormNumber == buf[1])
 					{
-						wormsList.erase(it);
-						wormsList.insert(it, newInfo);
+						(*it) = newInfo;
 						inserted = true;
 					}
 				}
@@ -234,6 +238,7 @@ void EventGenerator::shape(char * buf, unsigned int cant)
 
 			}
 		}
+
 	}
 	else if (buf[0] == 'Q')
 	{
