@@ -11,9 +11,9 @@ class  WaitingJumpState : public GenericState //Representa el intervalo entre el
 public:
 	WaitingJumpState();
 	virtual ~WaitingJumpState();
-	virtual GenericState* PressMove(WormEvent* ev);
-	virtual GenericState* PressJump(WormEvent*ev);
-	virtual GenericState* ReleaseJump(WormEvent*ev);
-	virtual GenericState* ReleaseMove(WormEvent*ev);
+	virtual GenericState* PressMove(WormEvent& ev);
+	virtual GenericState* PressJump(WormEvent& ev);
+	virtual GenericState* ReleaseJump(WormEvent& ev);
+	virtual GenericState* ReleaseMove(WormEvent& ev);
 
 };

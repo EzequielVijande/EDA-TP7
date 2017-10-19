@@ -11,9 +11,9 @@ class  IdleState : public GenericState
 public:
 	IdleState();
 	virtual ~IdleState();
-	virtual GenericState* PressMove(WormEvent* ev);
-	virtual GenericState* ReleaseMove(WormEvent*ev);
-	virtual GenericState* PressJump(WormEvent*ev);
+	virtual GenericState* PressMove(WormEvent& ev);
+	virtual GenericState* ReleaseMove(WormEvent& ev);
+	virtual GenericState* PressJump(WormEvent& ev);
 private:
 	
 
