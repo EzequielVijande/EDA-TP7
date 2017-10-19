@@ -5,9 +5,9 @@
 WaitingMoveState::WaitingMoveState() {};
 WaitingMoveState::~WaitingMoveState() {};
 
-GenericState* WaitingMoveState::PressMove(WormEvent* ev)
+GenericState* WaitingMoveState::PressMove(WormEvent& ev)
 {
-	unsigned int current_frame = (ev->worm)->getFrameCount();
+	unsigned int current_frame = (ev.worm)->getFrameCount();
 	if (current_frame >= START_MOVING_FRAME)
 	{
 		MovingState* prox_estado = new MovingState;
@@ -17,17 +17,17 @@ GenericState* WaitingMoveState::PressMove(WormEvent* ev)
 	return prox_estado;
 }
 
-GenericState* WaitingMoveState::ReleaseMove(WormEvent*ev)
+GenericState* WaitingMoveState::ReleaseMove(WormEvent& ev)
 {
-	(ev->worm)->stopMoving();
+	(ev.worm)->stopMoving();
 	IdleState* prox_estado = new IdleState; //No se llego a cumplir el lapso de tiempo necesario
 	return prox_estado;
 }
 
-GenericState* WaitingMoveState::PressJump(WormEvent*ev)
+GenericState* WaitingMoveState::PressJump(WormEvent& ev)
 {
-	(ev->worm)->stopMoving();
-	(ev->worm)->startJumping();
+	(ev.worm)->stopMoving();
+	(ev.worm)->startJumping();
 	JumpingState* prox_estado = new JumpingState;
 	return prox_estado;
 }
