@@ -22,4 +22,3 @@ public:
 	double getxMax(void);
 	double getxMin(void);
 };
-
