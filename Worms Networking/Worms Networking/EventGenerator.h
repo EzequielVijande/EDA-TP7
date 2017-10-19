@@ -15,6 +15,7 @@
 #include "WormInfo.h"
 
 
+
 #define P1_LEFT		ALLEGRO_KEY_LEFT
 #define P1_RIGHT	ALLEGRO_KEY_RIGHT
 #define P1_UP		ALLEGRO_KEY_UP

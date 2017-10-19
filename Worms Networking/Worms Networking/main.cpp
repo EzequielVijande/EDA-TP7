@@ -8,6 +8,8 @@
 #include "fileHandler.h"
 #include "FSM.h"
 
+
+
 const float FPS = 50.0;
 typedef maquina* p2machine_t;
 typedef ALLEGRO_DISPLAY* p2display_t;
