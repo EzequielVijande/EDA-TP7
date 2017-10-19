@@ -28,7 +28,7 @@ public:
 	void searchForEvents();
 	bool hayEvento();
 	bool isNotQuit();
-	GenericEvent getNextEvent();
+	GenericEvent* getNextEvent();
 	std::list<WormInfo>::iterator getListIterator();
 
 private:
@@ -42,7 +42,7 @@ private:
 	char buffer[512];
 	bool quit;
 
-	std::list<GenericEvent&> eventList;
+	std::list<GenericEvent*> eventList;
 	std::list<WormInfo> wormsList;
 
 	Worm * worm_;

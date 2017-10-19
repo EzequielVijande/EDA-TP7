@@ -75,10 +75,10 @@ bool EventGenerator::isNotQuit()
 	La funcion  getNextEvent supone que hay por lo menos un elemento en la lista, se debe preguntar antes
 	si lo hay con la funcion hayEvento
 */
-GenericEvent EventGenerator::getNextEvent()
+GenericEvent * EventGenerator::getNextEvent()
 {
-	std::list<GenericEvent&>::iterator it= eventList.begin();
-	GenericEvent&   current_ev = (*it);
+	std::list<GenericEvent*>::iterator it= eventList.begin();
+	GenericEvent*   current_ev = (*it);
 	eventList.pop_front();
 	return current_ev;
 }
@@ -160,7 +160,7 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 	if (type == ioEvent)
 	{
 		RefreshEvent evento1(events);
-		GenericEvent & genEv = evento1;
+		GenericEvent * genEv = &evento1;
 		evento1.p2graphic = graficos_;
 		evento1.p2worm = worm_;
 		evento1.worm_number = wormsList.size(); 
@@ -172,7 +172,7 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 	else if (type == WormEventT)
 	{
 		WormEvent evento2(events);
-		GenericEvent & genEv = evento2;
+		GenericEvent * genEv = &evento2;
 		evento2.worm = worm_;
 		eventList.push_back(genEv);
 

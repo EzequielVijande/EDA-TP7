@@ -16,8 +16,6 @@ typedef ALLEGRO_DISPLAY* p2display_t;
 typedef ALLEGRO_TIMER* p2timer_t;
 typedef ALLEGRO_EVENT_QUEUE* p2ev_queue_t;
 
-//#include "Graphics.h"
-
 #define DEF_PORT 12345
 #define DEF_PORT_STR "12345"
 
@@ -34,7 +32,6 @@ int main(int argc, char ** argv)
 	ALLEGRO_DISPLAY * display = nullptr;
 	ALLEGRO_TIMER * timer = nullptr;
 	ALLEGRO_EVENT_QUEUE* event_queue = nullptr;
-	ALLEGRO_EVENT ev;
 
 	if (!initAll(display, timer, event_queue))
 	{

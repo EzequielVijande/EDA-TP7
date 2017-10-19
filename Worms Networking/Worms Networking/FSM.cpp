@@ -6,31 +6,31 @@
 		prox_estado = nullptr;
 }
 
-void fsm:: dispatch(GenericEvent& evt)
+void fsm:: dispatch(GenericEvent* evt)
 {
-	switch (evt.GetEvent())
+	switch (evt->GetEvent())
 	{
 		case PRESS_MOVE:
-			prox_estado = estado->PressMove((WormEvent&)evt);
+			prox_estado = estado->PressMove((WormEvent*)evt);
 			break;
 
 		case RELEASE_MOVE:
-			prox_estado = estado->ReleaseMove((WormEvent&)evt);
+			prox_estado = estado->ReleaseMove((WormEvent*)evt);
 			break;
 
 		case PRESS_JUMP:
-			prox_estado = estado->PressJump((WormEvent&)evt);
+			prox_estado = estado->PressJump((WormEvent*)evt);
 			break;
 
 		case RELEASE_JUMP:
-			prox_estado = estado->ReleaseJump((WormEvent&)evt);
+			prox_estado = estado->ReleaseJump((WormEvent*)evt);
 			break;
 
 		case REFRESH:
-			estado->Refresh((RefreshEvent&)evt);
+			estado->Refresh((RefreshEvent*)evt);
 			break;
 		case QUIT:
-			prox_estado = estado->Quit((RefreshEvent&)evt);
+			prox_estado = estado->Quit((RefreshEvent*)evt);
 			break;
 
 	}
