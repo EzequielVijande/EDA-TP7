@@ -86,7 +86,6 @@ int main(int argc, char ** argv)
 
 int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia, int argc, char ** argv)
 {
-	bool ret = false;
 	bool maquinaFounded = false;
 	if (argc > 1) // Línea de comandos con otro parámetro además del nombre
 	{
@@ -100,19 +99,22 @@ int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia
 		}
 		if (!maquinaFounded)
 		{
-			ret = false;
 			cout << "La IP pasada como parametro no se encuentra en ips.txt" << endl;
 			cout << "IP ingresada: " << argv[1] << endl;
+		}
+		else
+		{
+			cout << "IP fue encontrada en ips.txt" << endl;
+			cout << "Inicializando conexion" << endl;
 		}
 
 	}
 	else
 	{
-		ret = false;
 		cout << "No ha ingresado parámetros" << endl;
 	}
 
-	return ret;
+	return maquinaFounded;
 }
 
 bool tryConection(vector<string> & ipsVector, int maquinaPropia, maquina * p2Mymaquina)
