@@ -13,6 +13,7 @@ typedef maquina* p2machine_t;
 typedef ALLEGRO_DISPLAY* p2display_t;
 typedef ALLEGRO_TIMER* p2timer_t;
 typedef ALLEGRO_EVENT_QUEUE* p2ev_queue_t;
+
 //#include "Graphics.h"
 
 #define DEF_PORT 12345
@@ -22,7 +23,7 @@ int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia
 
 bool tryConection(vector<string> & ipsVector, int maquinaPropia,p2machine_t& p2Mymaquina);
 
-bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& evqueue);
+bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& evqueue, ALLEGRO_EVENT ev);
 
 int main(int argc, char ** argv)
 {
@@ -31,8 +32,9 @@ int main(int argc, char ** argv)
 	ALLEGRO_DISPLAY * display = nullptr;
 	ALLEGRO_TIMER * timer = nullptr;
 	ALLEGRO_EVENT_QUEUE* event_queue = nullptr;
+	ALLEGRO_EVENT ev;
 
-	if (!initAll(display, timer, event_queue))
+	if (!initAll(display, timer, event_queue, ev))
 	{
 		cout << "Failed initialization" << endl;
 		return -1;
@@ -142,7 +144,7 @@ bool tryConection(vector<string> & ipsVector, int maquinaPropia, p2machine_t& p2
 	return ret;
 }
 
-bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& ev_queue)
+bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& ev_queue, ALLEGRO_EVENT ev)
 {
 	if (!al_init()) {
 		return false;
@@ -172,5 +174,10 @@ bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& ev_queue)
 	{
 		return false;
 	}
+	al_register_event_source(ev_queue, al_get_display_event_source(display));
+	al_register_event_source(ev_queue, al_get_timer_event_source(timer));
+	al_register_event_source(ev_queue, al_get_keyboard_event_source());
+	al_register_event_source(ev_queue, al_get_keyboard_event_source());
+
 	return true;
 }
