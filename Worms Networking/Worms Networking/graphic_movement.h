@@ -24,9 +24,6 @@ public:
 	unsigned int cant_walk_imgs;
 	unsigned int cant_jump_imgs;
 
-	//	ALLEGRO_BITMAP ** jump_img_lib;
-	//	ALLEGRO_BITMAP ** walk_img_lib;
-
 	ALLEGRO_BITMAP* walk_img_lib[15];
 	ALLEGRO_BITMAP* jump_img_lib[10];
 	ALLEGRO_BITMAP * background;

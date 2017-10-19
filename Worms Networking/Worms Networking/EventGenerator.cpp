@@ -17,6 +17,8 @@ EventGenerator::EventGenerator(Worm * worm, graphic_movement * graficos, maquina
 
 EventGenerator::~EventGenerator()
 {
+	//no destruyo las clases de worm graficos o connection ya que estos
+	//se destruyen en sus propios destructores luego
 }
 
 void EventGenerator::searchForEvents()
@@ -114,7 +116,11 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 				events.SetUd(P1_UP);
 				type = WormEventT;
 				break;
+			default:
+			{
+				type = otherEvent;
 			}break;
+			}
 		case ALLEGRO_EVENT_KEY_UP:
 			switch (ev.keyboard.keycode)
 			{
@@ -133,7 +139,11 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 				events.SetUd(P1_UP);
 				type = WormEventT;
 				break;
+			default:
+			{
+				type = otherEvent;
 			}break;
+			}
 		default:
 		{
 			type = otherEvent;
