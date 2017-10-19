@@ -76,14 +76,16 @@ int main(int argc, char ** argv)
 	Worm worms(maquinaPropia);
 	EventGenerator eg(&worms,&Graphics,p2Mymaquina, event_queue); // se le pasan cosas que sobreviven al dispatcher
 
-	al_start_timer(timer);
 	cout << "Timer inicializado" << endl;
+
+	al_start_timer(timer);
 	do
 	{
 		eg.searchForEvents();
 		if(eg.hayEvento())
 		{
 			state_machine.dispatch(eg.getNextEvent());
+
 		}
 	}while(eg.isNotQuit());
 

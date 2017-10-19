@@ -40,4 +40,5 @@ void fsm:: dispatch(GenericEvent* evt)
 		estado = prox_estado;
 		prox_estado = nullptr;
 	}
+	delete evt;
 }
