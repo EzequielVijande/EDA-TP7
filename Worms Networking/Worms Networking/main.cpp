@@ -56,6 +56,12 @@ int main(int argc, char ** argv)
 			cout << "Error al intentar conexión en red, verifique su conexión a la red..." << endl;
 		}
 	}
+	else
+	{
+		getchar();
+		exit(-1);
+	}
+
 	fsm state_machine;
 	Worm worms(maquinaPropia);
 	EventGenerator eg(&worms,&Graphics,p2Mymaquina); // se le pasan cosas que sobreviven al dispatcher
@@ -92,10 +98,11 @@ int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia
 				maquinaPropia = i + 1; // Identifico el numero de máquina. Es i '+1'  porque las máquinas comienzan en '1', pero i en '0'.
 			}
 		}
-		if (maquinaFounded)
+		if (!maquinaFounded)
 		{
 			ret = false;
-			cout << "el parámetro que se ingresó es erróneo" << endl;
+			cout << "La IP pasada como parametro no se encuentra en ips.txt" << endl;
+			cout << "IP ingresada: " << argv[1] << endl;
 		}
 
 	}
