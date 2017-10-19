@@ -29,7 +29,6 @@ void EventGenerator::searchForEvents()
 	size_t cant;
 	while (!finished)
 	{
-		cout << "antes del shape" << endl;
 		if (al_get_next_event(eventQueue,&evento))
 		{
 			shape(evento);
@@ -38,11 +37,9 @@ void EventGenerator::searchForEvents()
 		{
 			if (!error)
 			{
-				cout << "lei algo" << endl;
-				if (buffer[0] == 'W')
+				if ((buffer[0] == 'W')||(buffer[0] == 'E')||(buffer[0] == 'Q'))
 				{
 					shape(buffer, cant);
-					cout << "evento shapeado" << endl;
 				}
 			}
 		}
@@ -184,7 +181,7 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 }
 
 
-//asume que el package es de un worm, se debe chequear antes de llamar a esta funcion que el buf[0] sea una 'W'
+//asume que el package es de un worm, se debe chequear antes de llamar a esta funcion que el buf[0] sea una 'W', una 'Q' o una 'E' 
 /*
 Estructura del Worm Package: (12 chars)
 buffer[0] ---> 'W' header del package

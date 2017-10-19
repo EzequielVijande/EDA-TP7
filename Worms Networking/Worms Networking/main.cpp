@@ -16,8 +16,8 @@ typedef ALLEGRO_DISPLAY* p2display_t;
 typedef ALLEGRO_TIMER* p2timer_t;
 typedef ALLEGRO_EVENT_QUEUE* p2ev_queue_t;
 
-#define DEF_PORT 12345
-#define DEF_PORT_STR "12345"
+#define DEF_PORT 15667
+#define DEF_PORT_STR "15667"
 
 int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia, int argc, char ** argv);
 
