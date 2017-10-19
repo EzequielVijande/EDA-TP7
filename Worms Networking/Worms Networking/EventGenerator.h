@@ -42,7 +42,7 @@ private:
 	char buffer[512];
 	bool quit;
 
-	std::list<GenericEvent> eventList;
+	std::list<GenericEvent&> eventList;
 	std::list<WormInfo> wormsList;
 
 	Worm * worm_;

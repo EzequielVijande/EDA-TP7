@@ -45,6 +45,10 @@ int main(int argc, char ** argv)
 	graphic_movement Graphics;
 
 	Graphics.init();
+	Graphics.load_walk_imgs();
+	Graphics.load_background();
+	Graphics.load_jump_imgs();
+	Graphics.load_backgroundwoalpha();
 
 	fileHandler ipsHandler("ips.txt", 'r'); // Abro el archivo de las ips en modo escritura
 	vector <string> ipsVector;
@@ -76,6 +80,7 @@ int main(int argc, char ** argv)
 	EventGenerator eg(&worms,&Graphics,p2Mymaquina, event_queue); // se le pasan cosas que sobreviven al dispatcher
 
 	al_start_timer(timer);
+	cout << "Timer inicializado" << endl;
 	do
 	{
 		eg.searchForEvents();

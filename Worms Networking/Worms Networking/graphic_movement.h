@@ -38,19 +38,19 @@ public:
 
 	graphic_movement();
 	void init();
+
+	void load_jump_imgs();
 	void load_walk_imgs();
 	void load_background();
-	void flip_background();
+	void load_backgroundwoalpha();
+
 	void do_walking_step(Worm &worm);
 	void do_walking_step(WormInfo & worm); //para modificar Worms controlados por otra pc.
 	void do_jumping_step(Worm &worm);
 	void do_jumping_step(WormInfo & worm); //para modificar Worms controlados por otra pc.
-	void load_jump_imgs();
-
-
-	void load_backgroundwoalpha();
 
 	void flip_backgroundwoalpha();
+	void flip_background();
 
 
 	~graphic_movement();

@@ -24,18 +24,26 @@ EventGenerator::~EventGenerator()
 void EventGenerator::searchForEvents()
 {
 	bool finished = false;
-	int cant;
+	boost::system::error_code error;
+
+	size_t cant;
 	while (!finished)
 	{
+		cout << "antes del shape" << endl;
 		if (al_get_next_event(eventQueue,&evento))
 		{
 			shape(evento);
 		}
-		else if (cant = socket_->read_some(boost::asio::buffer(buffer)))
+		else if (cant = socket_->read_some(boost::asio::buffer(buffer),error))
 		{
-			if (buffer[0] == 'W')
+			if (!error)
 			{
-				shape(buffer, cant);
+				cout << "lei algo" << endl;
+				if (buffer[0] == 'W')
+				{
+					shape(buffer, cant);
+					cout << "evento shapeado" << endl;
+				}
 			}
 		}
 		else 
@@ -69,8 +77,8 @@ bool EventGenerator::isNotQuit()
 */
 GenericEvent EventGenerator::getNextEvent()
 {
-	std::list<GenericEvent>::iterator it= eventList.begin();
-	GenericEvent  current_ev = (*it);
+	std::list<GenericEvent&>::iterator it= eventList.begin();
+	GenericEvent&   current_ev = (*it);
 	eventList.pop_front();
 	return current_ev;
 }
@@ -152,21 +160,21 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 	if (type == ioEvent)
 	{
 		RefreshEvent evento1(events);
-		GenericEvent * genEv = &evento1;
+		GenericEvent & genEv = evento1;
 		evento1.p2graphic = graficos_;
 		evento1.p2worm = worm_;
-		evento1.worm_number = wormsList.size();
+		evento1.worm_number = wormsList.size(); 
 		std::list<WormInfo>::iterator ite = wormsList.begin();
 		evento1.it = ite;
 		evento1.socket_ = socket_;
-		eventList.push_back(*genEv);
+		eventList.push_back(genEv);
 	}
 	else if (type == WormEventT)
 	{
 		WormEvent evento2(events);
-		GenericEvent * genEv = &evento2;
+		GenericEvent & genEv = evento2;
 		evento2.worm = worm_;
-		eventList.push_back(*genEv);
+		eventList.push_back(genEv);
 
 	}
 	else if (type == otherEvent)
