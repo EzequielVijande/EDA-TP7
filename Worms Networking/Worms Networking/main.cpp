@@ -23,7 +23,7 @@ int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia
 
 bool tryConection(vector<string> & ipsVector, int maquinaPropia,p2machine_t& p2Mymaquina);
 
-bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& evqueue, ALLEGRO_EVENT ev);
+bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& evqueue);
 
 int main(int argc, char ** argv)
 {
@@ -34,7 +34,7 @@ int main(int argc, char ** argv)
 	ALLEGRO_EVENT_QUEUE* event_queue = nullptr;
 	ALLEGRO_EVENT ev;
 
-	if (!initAll(display, timer, event_queue, ev))
+	if (!initAll(display, timer, event_queue))
 	{
 		cout << "Failed initialization" << endl;
 		return -1;
@@ -144,7 +144,7 @@ bool tryConection(vector<string> & ipsVector, int maquinaPropia, p2machine_t& p2
 	return ret;
 }
 
-bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& ev_queue, ALLEGRO_EVENT ev)
+bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& ev_queue)
 {
 	if (!al_init()) {
 		return false;
