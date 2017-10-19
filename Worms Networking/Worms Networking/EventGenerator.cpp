@@ -78,7 +78,7 @@ std::list<WormInfo>::iterator EventGenerator::getListIterator()
 		std::list<WormInfo>::iterator it;
 		return it;
 	}
-enum {ioEvent,WormEventT};
+enum {ioEvent,WormEventT,otherEvent};
 void EventGenerator::shape(ALLEGRO_EVENT ev)
 {
 	int type;
@@ -114,8 +114,7 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 				events.SetUd(P1_UP);
 				type = WormEventT;
 				break;
-			}
-			break;
+			}break;
 		case ALLEGRO_EVENT_KEY_UP:
 			switch (ev.keyboard.keycode)
 			{
@@ -134,8 +133,11 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 				events.SetUd(P1_UP);
 				type = WormEventT;
 				break;
-			}
-			break;
+			}break;
+		default:
+		{
+			type = otherEvent;
+		}break;
 	}
 	if (type == ioEvent)
 	{
@@ -156,6 +158,10 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 		evento2.worm = worm_;
 		eventList.push_back(*genEv);
 
+	}
+	else if (type == otherEvent)
+	{
+		//no nos interesa otro tipo de evento para este tp
 	}
 }
 
