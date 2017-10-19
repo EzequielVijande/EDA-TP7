@@ -9,7 +9,10 @@
 #include "FSM.h"
 
 const float FPS = 50.0;
-
+typedef maquina* p2machine_t;
+typedef ALLEGRO_DISPLAY* p2display_t;
+typedef ALLEGRO_TIMER* p2timer_t;
+typedef ALLEGRO_EVENT_QUEUE* p2ev_queue_t;
 //#include "Graphics.h"
 
 #define DEF_PORT 12345
@@ -17,9 +20,9 @@ const float FPS = 50.0;
 
 int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia, int argc, char ** argv);
 
-bool tryConection(vector<string> & ipsVector, int maquinaPropia, maquina * p2Mymaquina);
+bool tryConection(vector<string> & ipsVector, int maquinaPropia,p2machine_t& p2Mymaquina);
 
-bool initAll(ALLEGRO_DISPLAY * display, ALLEGRO_TIMER * timer);
+bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& evqueue);
 
 int main(int argc, char ** argv)
 {
@@ -27,10 +30,12 @@ int main(int argc, char ** argv)
 	
 	ALLEGRO_DISPLAY * display = nullptr;
 	ALLEGRO_TIMER * timer = nullptr;
+	ALLEGRO_EVENT_QUEUE* event_queue = nullptr;
 
-	if (!initAll(display, timer))
+	if (!initAll(display, timer, event_queue))
 	{
-		//ERROR
+		cout << "Failed initialization" << endl;
+		return -1;
 	}
 
 	graphic_movement Graphics;
@@ -64,7 +69,7 @@ int main(int argc, char ** argv)
 
 	fsm state_machine;
 	Worm worms(maquinaPropia);
-	EventGenerator eg(&worms,&Graphics,p2Mymaquina); // se le pasan cosas que sobreviven al dispatcher
+	EventGenerator eg(&worms,&Graphics,p2Mymaquina, event_queue); // se le pasan cosas que sobreviven al dispatcher
 
 	al_start_timer(timer);
 	do
@@ -79,7 +84,9 @@ int main(int argc, char ** argv)
 	//destruyo todo lo que cree
 	
 	al_destroy_display(display);
-	
+	al_destroy_timer(timer);
+	al_destroy_event_queue(event_queue);
+	delete p2Mymaquina;
 	return 0;
 }
 
@@ -94,7 +101,7 @@ int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia
 			if (!strcmp(argv[1], ipsVector[i].c_str())) // Si la ip pasada por parámetro es una ip del archivo
 			{
 				maquinaFounded = true;
-				maquinaPropia = i + 1; // Identifico el numero de máquina. Es i '+1'  porque las máquinas comienzan en '1', pero i en '0'.
+				maquinaPropia = i; // Identifico el numero de máquina. Es i '+1'  porque las máquinas comienzan en '1', pero i en '0'.
 			}
 		}
 		if (!maquinaFounded)
@@ -117,7 +124,7 @@ int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia
 	return maquinaFounded;
 }
 
-bool tryConection(vector<string> & ipsVector, int maquinaPropia, maquina * p2Mymaquina)
+bool tryConection(vector<string> & ipsVector, int maquinaPropia, p2machine_t& p2Mymaquina)
 {
 	bool ret = false;
 	bool alreadyConected = false;
@@ -135,7 +142,7 @@ bool tryConection(vector<string> & ipsVector, int maquinaPropia, maquina * p2Mym
 	return ret;
 }
 
-bool initAll(ALLEGRO_DISPLAY * display, ALLEGRO_TIMER * timer)
+bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& ev_queue)
 {
 	if (!al_init()) {
 		return false;
@@ -160,6 +167,10 @@ bool initAll(ALLEGRO_DISPLAY * display, ALLEGRO_TIMER * timer)
 	if (!al_init_image_addon()) { // ADDON necesario para manejo(no olvidar el freno de mano) de imagenes
 		return false;
 	}
-
+	ev_queue = al_create_event_queue();
+	if (!ev_queue)
+	{
+		return false;
+	}
 	return true;
 }

@@ -22,7 +22,7 @@
 class EventGenerator
 {
 public:
-	EventGenerator(Worm * worm, graphic_movement * graficos, maquina * connection);
+	EventGenerator(Worm * worm, graphic_movement * graficos, maquina * connection, ALLEGRO_EVENT_QUEUE* ev_q);
 	~EventGenerator();
 	void searchForEvents();
 	bool hayEvento();
