@@ -7,6 +7,7 @@ class Physics
 private:
 	
 	
+
 public:
 	double gravity;
 	double jumpAngle;

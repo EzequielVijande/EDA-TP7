@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_image.h>
 #include "EventGenerator.h"
@@ -8,16 +10,16 @@
 #include "fileHandler.h"
 #include "FSM.h"
 
+
+
 const float FPS = 50.0;
 typedef maquina* p2machine_t;
 typedef ALLEGRO_DISPLAY* p2display_t;
 typedef ALLEGRO_TIMER* p2timer_t;
 typedef ALLEGRO_EVENT_QUEUE* p2ev_queue_t;
 
-//#include "Graphics.h"
-
-#define DEF_PORT 12345
-#define DEF_PORT_STR "12345"
+#define DEF_PORT 15667
+#define DEF_PORT_STR "15667"
 
 int parserCmd(vector <string> & ipsVector, int cantMaquinas, int & maquinaPropia, int argc, char ** argv);
 
@@ -28,11 +30,10 @@ bool initAll(p2display_t& display, p2timer_t& timer, p2ev_queue_t& evqueue);
 int main(int argc, char ** argv)
 {
 	//inicilizacion de allegro y boost
-	
+	srand(time(NULL));
 	ALLEGRO_DISPLAY * display = nullptr;
 	ALLEGRO_TIMER * timer = nullptr;
 	ALLEGRO_EVENT_QUEUE* event_queue = nullptr;
-	ALLEGRO_EVENT ev;
 
 	if (!initAll(display, timer, event_queue))
 	{
@@ -43,6 +44,10 @@ int main(int argc, char ** argv)
 	graphic_movement Graphics;
 
 	Graphics.init();
+	Graphics.load_walk_imgs();
+	Graphics.load_background();
+	Graphics.load_jump_imgs();
+	Graphics.load_backgroundwoalpha();
 
 	fileHandler ipsHandler("ips.txt", 'r'); // Abro el archivo de las ips en modo escritura
 	vector <string> ipsVector;
@@ -71,7 +76,10 @@ int main(int argc, char ** argv)
 
 	fsm state_machine;
 	Worm worms(maquinaPropia);
+	worms.setKeys(P1_RIGHT, P1_LEFT, P1_UP);
 	EventGenerator eg(&worms,&Graphics,p2Mymaquina, event_queue); // se le pasan cosas que sobreviven al dispatcher
+
+	cout << "Timer inicializado" << endl;
 
 	al_start_timer(timer);
 	do
@@ -80,6 +88,7 @@ int main(int argc, char ** argv)
 		if(eg.hayEvento())
 		{
 			state_machine.dispatch(eg.getNextEvent());
+
 		}
 	}while(eg.isNotQuit());
 

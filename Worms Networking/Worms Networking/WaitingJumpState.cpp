@@ -10,17 +10,17 @@ GenericState* WaitingJumpState::PressMove(WormEvent* ev)
 	return prox_estado;
 }
 
-GenericState* WaitingJumpState::ReleaseMove(WormEvent*ev)
+GenericState* WaitingJumpState::ReleaseMove(WormEvent* ev)
 {
 	return nullptr;
 }
 
-GenericState* WaitingJumpState::PressJump(WormEvent*ev)
+GenericState* WaitingJumpState::PressJump(WormEvent* ev)
 {
 	return nullptr;
 }
 
-GenericState* WaitingJumpState::ReleaseJump(WormEvent*ev)
+GenericState* WaitingJumpState::ReleaseJump(WormEvent* ev)
 {
 	return nullptr;
 }

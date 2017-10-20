@@ -40,11 +40,6 @@ graphic_movement::~graphic_movement()
 	for (unsigned int i = 0; i < cant_jump_imgs; i++) {
 		al_destroy_bitmap(jump_img_lib[i]);
 	}
-
-
-	//delete[] walk_img_lib;
-	//delete[] jump_img_lib;
-
 }
 
 

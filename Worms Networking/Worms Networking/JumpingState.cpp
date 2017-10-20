@@ -1,4 +1,5 @@
 #include "JumpingState.h"
+#include<iostream>
 #define LAST_JUMP_FRAME 50
 
 JumpingState::JumpingState() {};
@@ -22,9 +23,10 @@ GenericState* JumpingState::PressMove(WormEvent* ev)
 }
 
 
-GenericState* JumpingState::PressJump(WormEvent*ev)
+GenericState* JumpingState::PressJump(WormEvent* ev)
 {
 	unsigned int current_frame = (ev->worm)->getFrameCount();
+	std::cout << current_frame << std::endl;
 	if (current_frame == LAST_JUMP_FRAME)
 	{
 		(ev->worm)->startJumping();
@@ -39,11 +41,11 @@ GenericState* JumpingState::PressJump(WormEvent*ev)
 	}
 }
 
-GenericState* JumpingState::ReleaseJump(WormEvent*ev)
+GenericState* JumpingState::ReleaseJump(WormEvent* ev)
 {
 	(ev->worm)->stopJumping();
 	unsigned int current_frame = (ev->worm)->getFrameCount();
-	if (current_frame == 50)
+	if (current_frame == LAST_JUMP_FRAME)
 	{
 		IdleState* prox_estado = new IdleState;
 		return prox_estado;

@@ -19,7 +19,7 @@ GenericState* MovingState::PressMove(WormEvent* ev)
 	}
 }
 
-GenericState* MovingState::ReleaseMove(WormEvent*ev)
+GenericState* MovingState::ReleaseMove(WormEvent* ev)
 {
 	unsigned int current_frame = (ev->worm)->getFrameCount();
 	if (current_frame == END_MOVEMENT_FRAME)
@@ -35,7 +35,7 @@ GenericState* MovingState::ReleaseMove(WormEvent*ev)
 	}
 
 }
-GenericState* MovingState::PressJump(WormEvent*ev)
+GenericState* MovingState::PressJump(WormEvent* ev)
 {
 	unsigned int current_frame = (ev->worm)->getFrameCount();
 	if (current_frame == END_MOVEMENT_FRAME)

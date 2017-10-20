@@ -17,14 +17,14 @@ GenericState* WaitingMoveState::PressMove(WormEvent* ev)
 	return prox_estado;
 }
 
-GenericState* WaitingMoveState::ReleaseMove(WormEvent*ev)
+GenericState* WaitingMoveState::ReleaseMove(WormEvent* ev)
 {
 	(ev->worm)->stopMoving();
 	IdleState* prox_estado = new IdleState; //No se llego a cumplir el lapso de tiempo necesario
 	return prox_estado;
 }
 
-GenericState* WaitingMoveState::PressJump(WormEvent*ev)
+GenericState* WaitingMoveState::PressJump(WormEvent* ev)
 {
 	(ev->worm)->stopMoving();
 	(ev->worm)->startJumping();

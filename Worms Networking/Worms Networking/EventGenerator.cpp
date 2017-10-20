@@ -17,23 +17,30 @@ EventGenerator::EventGenerator(Worm * worm, graphic_movement * graficos, maquina
 
 EventGenerator::~EventGenerator()
 {
+	//no destruyo las clases de worm graficos o connection ya que estos
+	//se destruyen en sus propios destructores luego
 }
 
 void EventGenerator::searchForEvents()
 {
 	bool finished = false;
-	int cant;
+	boost::system::error_code error;
+
+	size_t cant;
 	while (!finished)
 	{
 		if (al_get_next_event(eventQueue,&evento))
 		{
 			shape(evento);
 		}
-		else if (cant = socket_->read_some(boost::asio::buffer(buffer)))
+		else if (cant = socket_->read_some(boost::asio::buffer(buffer),error))
 		{
-			if (buffer[0] == 'W')
+			if (!error)
 			{
-				shape(buffer, cant);
+				if ((buffer[0] == 'W')||(buffer[0] == 'E')||(buffer[0] == 'Q'))
+				{
+					shape(buffer, cant);
+				}
 			}
 		}
 		else 
@@ -65,10 +72,10 @@ bool EventGenerator::isNotQuit()
 	La funcion  getNextEvent supone que hay por lo menos un elemento en la lista, se debe preguntar antes
 	si lo hay con la funcion hayEvento
 */
-GenericEvent EventGenerator::getNextEvent()
+GenericEvent * EventGenerator::getNextEvent()
 {
-	std::list<GenericEvent>::iterator it= eventList.begin();
-	GenericEvent  current_ev = (*it);
+	std::list<GenericEvent*>::iterator it= eventList.begin();
+	GenericEvent*   current_ev = (*it);
 	eventList.pop_front();
 	return current_ev;
 }
@@ -78,7 +85,7 @@ std::list<WormInfo>::iterator EventGenerator::getListIterator()
 		std::list<WormInfo>::iterator it;
 		return it;
 	}
-enum {ioEvent,WormEventT};
+enum {ioEvent,WormEventT,otherEvent};
 void EventGenerator::shape(ALLEGRO_EVENT ev)
 {
 	int type;
@@ -103,65 +110,83 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 			case P1_LEFT:
 				events.SetEvent(PRESS_MOVE);
 				events.SetUd(P1_LEFT);
+				worm_->uData = P1_LEFT;
 				type = WormEventT;
 				break;
 			case P1_RIGHT:
 				events.SetEvent(PRESS_MOVE);
 				events.SetUd(P1_RIGHT);
+				worm_->uData = P1_RIGHT;
 				type = WormEventT;
 				break;
 			case P1_UP:
 				events.SetEvent(PRESS_JUMP);
 				events.SetUd(P1_UP);
+				worm_->uData = P1_UP;
 				type = WormEventT;
 				break;
-			}
-			break;
+			default:
+			{
+				type = otherEvent;
+			}break;
+			}break;
 		case ALLEGRO_EVENT_KEY_UP:
 			switch (ev.keyboard.keycode)
 			{
 			case P1_LEFT:
 				events.SetEvent(RELEASE_MOVE);
 				events.SetUd(P1_LEFT);
+				worm_->uData = P1_LEFT;
 				type = WormEventT;
 				break;
 			case P1_RIGHT:
 				events.SetEvent(RELEASE_MOVE);
 				events.SetUd(P1_RIGHT);
+				worm_->uData = P1_RIGHT;
 				type = WormEventT;
 				break;
 			case P1_UP:
 				events.SetEvent(RELEASE_JUMP);
 				events.SetUd(P1_UP);
+				worm_->uData = P1_UP;
 				type = WormEventT;
 				break;
-			}
-			break;
+			default:
+			{
+				type = otherEvent;
+			}break;
+			}break;
+		default:
+		{
+			type = otherEvent;
+		}break;
 	}
 	if (type == ioEvent)
 	{
-		RefreshEvent evento1(events);
-		GenericEvent * genEv = &evento1;
-		evento1.p2graphic = graficos_;
-		evento1.p2worm = worm_;
-		evento1.worm_number = wormsList.size();
+		GenericEvent * genEv = new RefreshEvent(events);
+		((RefreshEvent*)genEv)->p2graphic = graficos_;
+		((RefreshEvent*)genEv)->p2worm = worm_;
+		((RefreshEvent*)genEv)->worm_number = wormsList.size();
 		std::list<WormInfo>::iterator ite = wormsList.begin();
-		evento1.it = ite;
-		evento1.socket_ = socket_;
-		eventList.push_back(*genEv);
+		((RefreshEvent*)genEv)->it = ite;
+		((RefreshEvent*)genEv)->socket_ = socket_;
+		eventList.push_back(genEv);
 	}
 	else if(type == WormEventT)
 	{
-		WormEvent evento2(events);
-		GenericEvent * genEv = &evento2;
-		evento2.worm = worm_;
-		eventList.push_back(*genEv);
+		GenericEvent * genEv = new WormEvent (events);
+		((WormEvent*)genEv)->worm = worm_;
+		eventList.push_back(genEv);
 
+	}
+	else if (type == otherEvent)
+	{
+		//no nos interesa otro tipo de evento para este tp
 	}
 }
 
 
-//asume que el package es de un worm, se debe chequear antes de llamar a esta funcion que el buf[0] sea una 'W'
+//asume que el package es de un worm, se debe chequear antes de llamar a esta funcion que el buf[0] sea una 'W', una 'Q' o una 'E' 
 /*
 Estructura del Worm Package: (12 chars)
 buffer[0] ---> 'W' header del package
@@ -201,10 +226,9 @@ void EventGenerator::shape(char * buf, unsigned int cant)
 				bool inserted = false;
 				for (int i = 0; i < wormsList.size(); i++, it++)
 				{
-					if (it->wormNumber = buf[1])
+					if (it->wormNumber == buf[1])
 					{
-						wormsList.erase(it);
-						wormsList.insert(it, newInfo);
+						(*it) = newInfo;
 						inserted = true;
 					}
 				}
@@ -215,6 +239,7 @@ void EventGenerator::shape(char * buf, unsigned int cant)
 
 			}
 		}
+
 	}
 	else if (buf[0] == 'Q')
 	{

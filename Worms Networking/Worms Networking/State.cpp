@@ -10,20 +10,20 @@ GenericState* GenericState::PressMove(WormEvent* ev)
 {
 	return nullptr;
 }
-GenericState* GenericState::ReleaseMove(WormEvent*ev)
+GenericState* GenericState::ReleaseMove(WormEvent* ev)
 {
 	return nullptr;
 }
-GenericState* GenericState::PressJump(WormEvent*ev)
+GenericState* GenericState::PressJump(WormEvent* ev)
 {
 	return nullptr;
 }
-GenericState* GenericState::ReleaseJump(WormEvent*ev)
+GenericState* GenericState::ReleaseJump(WormEvent* ev)
 {
 	return nullptr;
 }
 
-GenericState* GenericState::Refresh(RefreshEvent*ev)
+GenericState* GenericState::Refresh(RefreshEvent* ev)
 {
 	(ev->p2graphic)->flip_backgroundwoalpha();
 	(ev->p2graphic)->flip_background();
@@ -52,9 +52,14 @@ GenericState* GenericState::Refresh(RefreshEvent*ev)
 	return nullptr; //Como no cambia el estado devuelve nullptr.
 }
 
-GenericState* GenericState::Quit(RefreshEvent*ev)
+GenericState* GenericState::Quit(RefreshEvent* ev)
 {
+	
 	//Aca hay que mandar el paquete de Quit con boost
+	size_t len;
+	char buf[1];
+	buf[0] = 'Q';
+	len = (ev->socket_)->write_some(boost::asio::buffer(buf, 1)); //1: tamaño del buffer.
 	return nullptr;
 }
 
@@ -74,10 +79,12 @@ char * GenericState::createWormPackage(Worm * p2worm)
 	char * package = new char [13]; //13: tamaño del wormPackage
 	package[0] = 'W';
 	package[1] = p2worm->getNumber();
-	package[2] = p2worm->getSentido();
+	package[2] = p2worm->getState();
 	package[3] = (char)p2worm->getFrameCount();
-	package[5] = (uint32_t)p2worm->getPos().x;
-	package[9] = (uint32_t)p2worm->getPos().y;
+	uint32_t * aux1 = (uint32_t*)&package[5];
+	*aux1 = (uint32_t)p2worm->getPos().x;
+	uint32_t * aux2 = (uint32_t*)&package[9];
+	*aux2= (uint32_t)p2worm->getPos().y;
 
 	if (p2worm->getSentido()) //getSentido devuelve un bool
 	{

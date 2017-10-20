@@ -14,9 +14,8 @@
 #include "Server.h"
 #include "WormInfo.h"
 
-
-#define P1_LEFT		ALLEGRO_KEY_LEFT
 #define P1_RIGHT	ALLEGRO_KEY_RIGHT
+#define P1_LEFT		ALLEGRO_KEY_LEFT
 #define P1_UP		ALLEGRO_KEY_UP
 
 class EventGenerator
@@ -27,7 +26,7 @@ public:
 	void searchForEvents();
 	bool hayEvento();
 	bool isNotQuit();
-	GenericEvent getNextEvent();
+	GenericEvent* getNextEvent();
 	std::list<WormInfo>::iterator getListIterator();
 
 private:
@@ -41,7 +40,7 @@ private:
 	char buffer[512];
 	bool quit;
 
-	std::list<GenericEvent> eventList;
+	std::list<GenericEvent*> eventList;
 	std::list<WormInfo> wormsList;
 
 	Worm * worm_;
