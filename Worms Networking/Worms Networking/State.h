@@ -16,6 +16,6 @@ public:
 	virtual GenericState* ReleaseJump(WormEvent* ev);
 	virtual GenericState* Refresh(RefreshEvent* ev);
 	virtual	GenericState* Quit(RefreshEvent* ev);
-private:
+protected:
 	char * createWormPackage(Worm * p2worm);
 };

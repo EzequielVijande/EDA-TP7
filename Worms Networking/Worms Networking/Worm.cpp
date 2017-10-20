@@ -209,7 +209,8 @@ void Worm::update(void)
 				old_pos = pos;
 			}
 
-				if (frameCount > 5 &&  frameCount < 33 ) {
+				if (frameCount > 5 &&  frameCount < 33 )
+				{
 					position newPos;
 				
 					newPos.x = 0;
