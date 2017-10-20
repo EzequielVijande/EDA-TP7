@@ -74,7 +74,7 @@ void Worm::startJumping(void)
 {
 	if (uData == keys.up)
 	{
-		if (state == IDLE)
+		if ((state == IDLE)||(state==END_MOVEMENT)) //Chequear!
 		{
 			state = JUMPING;
 			frameCount = 0;

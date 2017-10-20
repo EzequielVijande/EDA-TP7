@@ -5,26 +5,17 @@ MovingState::~MovingState() {};
 
 GenericState* MovingState::PressMove(WormEvent* ev)
 {
-	unsigned int current_frame = (ev->worm)->getFrameCount();
-	if (current_frame == END_MOVEMENT_FRAME)
-	{
-		(ev->worm)->startMoving();
-		WaitingMoveState* estado = new WaitingMoveState;
-		return estado;
-	}
-	else
-	{
-		MovingState* estado = new MovingState;
-		return estado;
-	}
+	(ev->worm)->startMoving();
+	MovingState* estado = new MovingState;
+	return estado;
 }
 
 GenericState* MovingState::ReleaseMove(WormEvent* ev)
 {
 	unsigned int current_frame = (ev->worm)->getFrameCount();
+	(ev->worm)->stopMoving();
 	if (current_frame == END_MOVEMENT_FRAME)
 	{
-		(ev->worm)->stopMoving();
 		IdleState* estado = new IdleState;
 		return estado;
 	}
