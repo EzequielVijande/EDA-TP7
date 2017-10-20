@@ -87,6 +87,7 @@ int main(int argc, char ** argv)
 		eg.searchForEvents();
 		if(eg.hayEvento())
 		{
+
 			state_machine.dispatch(eg.getNextEvent());
 
 		}

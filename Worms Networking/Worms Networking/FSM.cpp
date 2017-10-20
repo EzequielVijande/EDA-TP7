@@ -1,5 +1,5 @@
 #include "FSM.h"
-
+#include <iostream>
 	fsm::fsm()
 { 
 		estado = new IdleState; //Pone la FSM en su estado inicial.
@@ -8,6 +8,9 @@
 
 void fsm:: dispatch(GenericEvent* evt)
 {
+	if (evt->GetEvent() != 4) {
+		std::cout << evt->GetEvent() << endl;
+	}
 	switch (evt->GetEvent())
 	{
 		case PRESS_MOVE:

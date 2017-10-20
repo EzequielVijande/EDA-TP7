@@ -19,6 +19,14 @@ EventGenerator::~EventGenerator()
 {
 	//no destruyo las clases de worm graficos o connection ya que estos
 	//se destruyen en sus propios destructores luego
+	if (!eventList.empty())
+	{
+		eventList.clear();
+	}
+	if (!wormsList.empty())
+	{
+		wormsList.clear();
+	}
 }
 
 void EventGenerator::searchForEvents()
@@ -85,12 +93,13 @@ std::list<WormInfo>::iterator EventGenerator::getListIterator()
 		std::list<WormInfo>::iterator it;
 		return it;
 	}
+
 enum {ioEvent,WormEventT,otherEvent};
+
 void EventGenerator::shape(ALLEGRO_EVENT ev)
 {
 	int type;
 	GenericEvent events;
-	cout << (ev.type) << endl;
 	switch (ev.type) 
 	{
 		case ALLEGRO_EVENT_DISPLAY_CLOSE:
@@ -163,14 +172,23 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 	}
 	if (type == ioEvent)
 	{
-		GenericEvent * genEv = new RefreshEvent(events);
-		((RefreshEvent*)genEv)->p2graphic = graficos_;
-		((RefreshEvent*)genEv)->p2worm = worm_;
-		((RefreshEvent*)genEv)->worm_number = wormsList.size();
-		std::list<WormInfo>::iterator ite = wormsList.begin();
-		((RefreshEvent*)genEv)->it = ite;
-		((RefreshEvent*)genEv)->socket_ = socket_;
-		eventList.push_back(genEv);
+		if (!(events.GetEvent() == QUIT))
+		{
+			GenericEvent * genEv = new RefreshEvent(events);
+			((RefreshEvent*)genEv)->p2graphic = graficos_;
+			((RefreshEvent*)genEv)->p2worm = worm_;
+			((RefreshEvent*)genEv)->worm_number = wormsList.size();
+			std::list<WormInfo>::iterator ite = wormsList.begin();
+			((RefreshEvent*)genEv)->it = ite;
+			((RefreshEvent*)genEv)->socket_ = socket_;
+			eventList.push_back(genEv);
+		}
+		else //para el quit no guardo informacion innecesaria
+		{
+			GenericEvent * genEve = new RefreshEvent(events);
+			((RefreshEvent*)genEve)->socket_ = socket_;
+			eventList.push_back(genEve);
+		}
 	}
 	else if(type == WormEventT)
 	{

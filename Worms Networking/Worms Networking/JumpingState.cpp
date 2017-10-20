@@ -7,6 +7,7 @@ JumpingState::~JumpingState() {};
 
 GenericState* JumpingState::PressMove(WormEvent* ev)
 {
+	(ev->worm)->stopJumping();
 	unsigned int current_frame = (ev->worm)->getFrameCount();
 	if (current_frame == LAST_JUMP_FRAME)
 	{
@@ -26,7 +27,6 @@ GenericState* JumpingState::PressMove(WormEvent* ev)
 GenericState* JumpingState::PressJump(WormEvent* ev)
 {
 	unsigned int current_frame = (ev->worm)->getFrameCount();
-	std::cout << current_frame << std::endl;
 	if (current_frame == LAST_JUMP_FRAME)
 	{
 		(ev->worm)->startJumping();
@@ -45,17 +45,8 @@ GenericState* JumpingState::ReleaseJump(WormEvent* ev)
 {
 	(ev->worm)->stopJumping();
 	unsigned int current_frame = (ev->worm)->getFrameCount();
-	if (current_frame == LAST_JUMP_FRAME)
-	{
 		IdleState* prox_estado = new IdleState;
 		return prox_estado;
-	}
-	else
-	{
-		JumpingState* prox_estado = new JumpingState;
-		return prox_estado;
-	}
-	
 }
 
 GenericState* JumpingState::Refresh(RefreshEvent* ev)
@@ -70,7 +61,7 @@ GenericState* JumpingState::Refresh(RefreshEvent* ev)
 
 
 	for (unsigned int i = 0; i < (ev->worm_number); i++, (ev->it)++) //worm_number es la cantidad de worms controlados por otras maquinas
-	{												//it recorre la lista de WormInfo FALTA DEFINIR BIEN ESTE ITERADOR.
+	{
 		(ev->p2graphic)->do_walking_step(*(ev->it));
 		(ev->p2graphic)->do_jumping_step(*(ev->it));
 
@@ -85,15 +76,6 @@ GenericState* JumpingState::Refresh(RefreshEvent* ev)
 
 	al_flip_display();
 
-	if (current_frame == LAST_JUMP_FRAME)
-	{
-		(ev->p2worm)->stopJumping();
-		IdleState* prox_estado = new IdleState;
-		return prox_estado;
-	}
-	else
-	{
-		return nullptr; //Como no cambia el estado devuelve nullptr.
-	}
+	return nullptr; //Como no cambia el estado devuelve nullptr.
 	
 }
