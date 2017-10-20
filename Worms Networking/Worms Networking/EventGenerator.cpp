@@ -83,6 +83,7 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 {
 	int type;
 	GenericEvent events;
+	cout << (ev.type) << endl;
 	switch (ev.type) 
 	{
 		case ALLEGRO_EVENT_DISPLAY_CLOSE:
@@ -149,7 +150,7 @@ void EventGenerator::shape(ALLEGRO_EVENT ev)
 		evento1.socket_ = socket_;
 		eventList.push_back(*genEv);
 	}
-	else if (type == WormEventT)
+	else if(type == WormEventT)
 	{
 		WormEvent evento2(events);
 		GenericEvent * genEv = &evento2;
