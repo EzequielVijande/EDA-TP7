@@ -5,13 +5,10 @@
 #include "Event.h"
 #include "Worm.h"
 #include "allegro5\allegro.h"
-#include "boost\asio.hpp"
 #include "Event.h"
 #include "WormEvent.h"
 #include "RefreshEvent.h"
 #include "graphic_movement.h"
-#include "Client.h"
-#include "Server.h"
 #include "WormInfo.h"
 
 #define P1_RIGHT	ALLEGRO_KEY_RIGHT
@@ -21,7 +18,7 @@
 class EventGenerator
 {
 public:
-	EventGenerator(Worm * worm, graphic_movement * graficos, maquina * connection, ALLEGRO_EVENT_QUEUE* ev_q);
+	EventGenerator(Worm * worm, graphic_movement * graficos, ALLEGRO_EVENT_QUEUE* ev_q);
 	~EventGenerator();
 	void searchForEvents();
 	bool hayEvento();
@@ -31,13 +28,10 @@ public:
 
 private:
 	void shape(ALLEGRO_EVENT ev);
-	void shape(char * buf, unsigned int cant);
 	bool DetectLittleEndian(void);
 
 	ALLEGRO_EVENT_QUEUE * eventQueue;
 	ALLEGRO_EVENT evento;
-
-	char buffer[512];
 	bool quit;
 
 	std::list<GenericEvent*> eventList;
@@ -45,6 +39,5 @@ private:
 
 	Worm * worm_;
 	graphic_movement * graficos_;
-	boost::asio::ip::tcp::socket* socket_; //lo necesario para poder leer y escribir
 };
 

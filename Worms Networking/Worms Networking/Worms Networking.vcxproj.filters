@@ -72,6 +72,12 @@
     <ClInclude Include="WaitingJumpState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EndMovingState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EndJumpState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EventGenerator.cpp">
@@ -129,6 +135,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Physics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EndMovingState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EndJumpState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
