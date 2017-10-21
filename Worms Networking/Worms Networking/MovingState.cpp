@@ -18,11 +18,3 @@ GenericState* MovingState::ReleaseMove(WormEvent* ev)
 	return estado;
 
 }
-<<<<<<< HEAD
-
-=======
-GenericState* MovingState::PressJump(WormEvent* ev)
-{
-	return nullptr;
-}
->>>>>>> d5c16a2591c674b1d34b77ad40a801c755751617

@@ -129,6 +129,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
+    <ClInclude Include="EndJumpState.h" />
+    <ClInclude Include="EndMovingState.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventGenerator.h" />
     <ClInclude Include="fileHandler.h" />
@@ -150,6 +152,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="EndJumpState.cpp" />
+    <ClCompile Include="EndMovingState.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventGenerator.cpp" />
     <ClCompile Include="fileHandler.cpp" />
