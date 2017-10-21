@@ -3,12 +3,12 @@
 #include <iostream>
 using namespace std;
 
-const float map_xlimit_der = 1180.0; //1180.0
-const float map_xlimit_izq =  680.0; //680.0
+const float map_xlimit_der = 1180.0;
+const float map_xlimit_izq =  680.0;
 
 Worm::Worm()
 {
-	pos.x = xMin + (double)(rand() % ((int)(xMax - xMin)));
+	pos.x = xMin + (double)(rand() % ((int)(xMax - xMin))); //inicializacion random
 	for (; pos.x > map_xlimit_der; pos.x--)
 	{
 	}
@@ -23,8 +23,8 @@ Worm::Worm()
 
 Worm::Worm(unsigned int nrodeserie_)
 {
-	pos.x = xMin + (double)(rand() % ((int)(xMax - xMin)));
-	for (; pos.x > map_xlimit_der; pos.x--)
+	pos.x = xMin + (double)(rand() % ((int)(xMax - xMin))); //inicializacion random
+	for (; pos.x > map_xlimit_der; pos.x--) //si por alguna razon se pasa del limite, se decrementa hasta estar dentro del rango
 	{
 	}
 	sentido = (bool)((int)(pos.x) % 2);
@@ -96,21 +96,19 @@ void Worm::stopJumping(void)
 	}
 }
 
-void Worm::update(void)
+void Worm::update(void) //frameCount inicializados en -1 ya qu eal final de la funcion se incrementan por lo que quedan en 0 siempre
 {
 	switch (state)
 	{
 		case IDLE:
 		{
-			frameCount = 0;
-			//nada
+			frameCount = -1; 
 		} break;
 		case MOVING:
 		{
 			if (frameCount == 50)
 			{
-				//state = IDLE;
-				frameCount = 0;
+				frameCount = -1;
 			}
 			if (frameCount == 22 || frameCount == 36 || frameCount == 0) {   //Inicio de un nuevo ciclo de imagenes
 				position newPos;
@@ -165,7 +163,7 @@ void Worm::update(void)
 			if (frameCount == 50)
 			{
 				state = IDLE;
-				frameCount = 0;
+				frameCount = - 1;
 			}
 			if (frameCount == 22 || frameCount == 36 || frameCount == 0) {		//Inicio de un nuevo ciclo de imagenes
 				position newPos;
@@ -201,7 +199,7 @@ void Worm::update(void)
 		{
 			if (frameCount == 50)
 			{
-				frameCount = 0;
+				frameCount = - 1;
 				old_pos = pos;
 			}
 
@@ -247,14 +245,14 @@ void Worm::update(void)
 				
 				newPos.y = old_pos.y - JUMP_VEL*sin(physics_data.jumpAngle)*((double)frameCount) + (0.5)*(physics_data.gravity)*pow(frameCount, 2);
 				if (frameCount == 32) {
-					newPos.y = old_pos.y;
+					newPos.y = old_pos.y; //para que no haya errores de redondeo se guarda la posy original para que sea igual a la final
 				}
 				setPos(newPos);
 			}
 			if (frameCount == 50)
 			{
 				state = IDLE;
-				frameCount = 0;
+				frameCount = - 1;
 			}
 		} break;
 	}

@@ -45,7 +45,7 @@ private:
 	const double xMin = 707;
 	unsigned int nrodeserie;
 
-	struct data
+	struct data //teclas a las que responde el worm
 	{
 		char up;
 		char left;
