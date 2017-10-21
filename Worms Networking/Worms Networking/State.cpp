@@ -59,6 +59,7 @@ GenericState* GenericState::Quit(RefreshEvent* ev)
 	char buf[1];
 	buf[0] = 'Q';
 	len = (ev->socket_)->write_some(boost::asio::buffer(buf, 1)); //1: tamaño del buffer.
+	al_rest(1.0); //le da tiempo al client de desconectarse
 
 	return nullptr;
 }

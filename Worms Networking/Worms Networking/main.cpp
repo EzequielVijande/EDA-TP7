@@ -96,6 +96,7 @@ int main(int argc, char ** argv)
 
 	cout << "Simulacion finalizada" << endl;
 	cout << "Presione enter para salir del programa" << endl;
+
 	getchar();
 	//destruyo todo lo que cree
 	
