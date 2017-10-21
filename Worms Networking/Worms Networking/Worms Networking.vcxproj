@@ -128,27 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Client.h" />
-    <ClInclude Include="EndJumpState.h" />
-    <ClInclude Include="EndMovingState.h" />
-    <ClInclude Include="Event.h" />
-    <ClInclude Include="EventGenerator.h" />
-    <ClInclude Include="fileHandler.h" />
-    <ClInclude Include="FSM.h" />
-    <ClInclude Include="graphic_movement.h" />
-    <ClInclude Include="IdleState.h" />
-    <ClInclude Include="JumpingState.h" />
-    <ClInclude Include="maquina.h" />
-    <ClInclude Include="MovingState.h" />
-    <ClInclude Include="Physics.h" />
-    <ClInclude Include="RefreshEvent.h" />
-    <ClInclude Include="Server.h" />
-    <ClInclude Include="State.h" />
-    <ClInclude Include="WaitingJumpState.h" />
-    <ClInclude Include="WaitingMoveState.h" />
-    <ClInclude Include="Worm.h" />
-    <ClInclude Include="WormEvent.h" />
-    <ClInclude Include="WormInfo.h" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
@@ -174,7 +154,27 @@
     <ClCompile Include="WormEvent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="EndJumpState.h" />
+    <ClInclude Include="EndMovingState.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="EventGenerator.h" />
+    <ClInclude Include="fileHandler.h" />
+    <ClInclude Include="FSM.h" />
+    <ClInclude Include="graphic_movement.h" />
+    <ClInclude Include="IdleState.h" />
+    <ClInclude Include="JumpingState.h" />
+    <ClInclude Include="maquina.h" />
+    <ClInclude Include="MovingState.h" />
+    <ClInclude Include="Physics.h" />
+    <ClInclude Include="RefreshEvent.h" />
+    <ClInclude Include="Server.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="WaitingJumpState.h" />
+    <ClInclude Include="WaitingMoveState.h" />
+    <ClInclude Include="Worm.h" />
+    <ClInclude Include="WormEvent.h" />
+    <ClInclude Include="WormInfo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

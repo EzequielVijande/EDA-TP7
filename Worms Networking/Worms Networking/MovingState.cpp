@@ -18,4 +18,3 @@ GenericState* MovingState::ReleaseMove(WormEvent* ev)
 	return estado;
 
 }
-

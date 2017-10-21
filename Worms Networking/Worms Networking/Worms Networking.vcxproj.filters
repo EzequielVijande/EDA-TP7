@@ -5,118 +5,46 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EventGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FSM.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Client.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Server.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Worm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WormEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RefreshEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IdleState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JumpingState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MovingState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WaitingMoveState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="graphic_movement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="fileHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="maquina.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WormInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WaitingJumpState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EndMovingState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EndJumpState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EventGenerator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FSM.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Server.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EndJumpState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EndMovingState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Event.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Worm.cpp">
+    <ClCompile Include="EventGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IdleState.cpp">
+    <ClCompile Include="fileHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FSM.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="graphic_movement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
+    <ClCompile Include="IdleState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JumpingState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WaitingMoveState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="fileHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="maquina.cpp">
@@ -125,26 +53,94 @@
     <ClCompile Include="MovingState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WaitingJumpState.cpp">
+    <ClCompile Include="Physics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RefreshEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WaitingJumpState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WaitingMoveState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Worm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="WormEvent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EndMovingState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EndJumpState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ClInclude Include="Client.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EndJumpState.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EndMovingState.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventGenerator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fileHandler.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FSM.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic_movement.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpingState.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="maquina.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingState.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RefreshEvent.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WaitingJumpState.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WaitingMoveState.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Worm.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WormEvent.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WormInfo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

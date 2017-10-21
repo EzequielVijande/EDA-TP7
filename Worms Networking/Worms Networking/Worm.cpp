@@ -8,14 +8,12 @@ const float map_xlimit_izq =  680.0; //680.0
 
 Worm::Worm()
 {
-	//pos.x = xMin + (double)(rand()) / ((double)(RAND_MAX / (xMax -xMin)));
-	//pos.x = xMin + (double)(rand() % ((int)(xMax - xMin)));
-	pos.x = 1000;
+	pos.x = xMin + (double)(rand() % ((int)(xMax - xMin)));
 	for (; pos.x > map_xlimit_der; pos.x--)
 	{
 	}
 	sentido = (bool) ((int)(pos.x) % 2);
-	pos.y = 607;
+	pos.y = 616;
 	frameCount = 0;
 	state = IDLE;
 	uData = 0;
@@ -74,7 +72,7 @@ void Worm::startJumping(void)
 {
 	if (uData == keys.up)
 	{
-		if ((state == IDLE)) //Chequear!
+		if ((state == IDLE)||(state==END_MOVEMENT)) //Chequear!
 		{
 			state = JUMPING;
 			frameCount = 0;
@@ -201,10 +199,8 @@ void Worm::update(void)
 		} break;
 		case JUMPING:
 		{
-			//agregar calculo de jumping
 			if (frameCount == 50)
 			{
-				//state = IDLE;
 				frameCount = 0;
 				old_pos = pos;
 			}
