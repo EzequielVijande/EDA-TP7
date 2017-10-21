@@ -8,8 +8,10 @@
 
 void fsm:: dispatch(GenericEvent* evt)
 {
-	if (evt->GetEvent() != 4) {
-		std::cout << evt->GetEvent() << endl;
+	event p = evt->GetEvent();
+	if (p!=REFRESH)
+	{
+		std::cout << p << endl;
 	}
 	switch (evt->GetEvent())
 	{
@@ -30,10 +32,7 @@ void fsm:: dispatch(GenericEvent* evt)
 			break;
 
 		case REFRESH:
-			estado->Refresh((RefreshEvent*)evt);
-			break;
-		case QUIT:
-			prox_estado = estado->Quit((RefreshEvent*)evt);
+			prox_estado = estado->Refresh((RefreshEvent*)evt);
 			break;
 
 	}

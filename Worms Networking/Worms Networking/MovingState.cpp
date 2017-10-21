@@ -14,19 +14,15 @@ GenericState* MovingState::ReleaseMove(WormEvent* ev)
 {
 	unsigned int current_frame = (ev->worm)->getFrameCount();
 	(ev->worm)->stopMoving();
-	if (current_frame == END_MOVEMENT_FRAME)
-	{
-		IdleState* estado = new IdleState;
-		return estado;
-	}
-	else
-	{
-		MovingState* estado = new MovingState;
-		return estado;
-	}
+	EndMovingState* estado = new EndMovingState;
+	return estado;
 
 }
+<<<<<<< HEAD
+
+=======
 GenericState* MovingState::PressJump(WormEvent* ev)
 {
 	return nullptr;
 }
+>>>>>>> d5c16a2591c674b1d34b77ad40a801c755751617

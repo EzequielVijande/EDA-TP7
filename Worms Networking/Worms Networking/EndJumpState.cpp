@@ -1,20 +1,15 @@
-#include "WaitingMoveState.h"
+#include "EndJumpState.h"
+#define LAST_JUMP_FRAME 50
+EndJumpState:: EndJumpState(){}
+EndJumpState::~EndJumpState(){}
 
-#define START_MOVING_FRAME 5
-
-WaitingMoveState::WaitingMoveState() {};
-WaitingMoveState::~WaitingMoveState() {};
-
-
-GenericState* WaitingMoveState::ReleaseMove(WormEvent* ev)
+GenericState* EndJumpState::PressJump(WormEvent* ev)
 {
-	(ev->worm)->stopMoving();
-	IdleState* prox_estado = new IdleState; //No se llego a cumplir el lapso de tiempo necesario
-	return prox_estado;
+	(ev->worm)->startJumping();
+	JumpingState* estado = new JumpingState;
+	return estado;
 }
-
-
-GenericState* WaitingMoveState::Refresh(RefreshEvent* ev)
+GenericState* EndJumpState::Refresh(RefreshEvent* ev)
 {
 	unsigned int current_frame = (ev->p2worm)->getFrameCount();
 	(ev->p2graphic)->flip_backgroundwoalpha();
@@ -39,17 +34,16 @@ GenericState* WaitingMoveState::Refresh(RefreshEvent* ev)
 
 	delete buf;
 	*/
-	al_flip_display();
 
-	if (current_frame >= START_MOVING_FRAME)
+	al_flip_display();
+	
+	if (current_frame == LAST_JUMP_FRAME)
 	{
-		MovingState* prox_estado = new MovingState;
-		return prox_estado;
+		IdleState* estado = new IdleState;
+		return estado;
 	}
 	else
 	{
 		return nullptr; //Como no cambia el estado devuelve nullptr.
 	}
-
 }
-

@@ -1,22 +1,19 @@
-#include "WaitingMoveState.h"
+#include "EndMovingState.h"
+#define END_MOVEMENT_FRAME 50
+EndMovingState::EndMovingState() {};
+EndMovingState::~EndMovingState() {};
 
-#define START_MOVING_FRAME 5
-
-WaitingMoveState::WaitingMoveState() {};
-WaitingMoveState::~WaitingMoveState() {};
-
-
-GenericState* WaitingMoveState::ReleaseMove(WormEvent* ev)
+GenericState*EndMovingState::PressMove(WormEvent* ev)
 {
-	(ev->worm)->stopMoving();
-	IdleState* prox_estado = new IdleState; //No se llego a cumplir el lapso de tiempo necesario
-	return prox_estado;
+	(ev->worm)->startMoving();
+	MovingState* estado = new MovingState;
+	return estado;
 }
 
-
-GenericState* WaitingMoveState::Refresh(RefreshEvent* ev)
+GenericState*EndMovingState::Refresh(RefreshEvent* ev)
 {
 	unsigned int current_frame = (ev->p2worm)->getFrameCount();
+
 	(ev->p2graphic)->flip_backgroundwoalpha();
 	(ev->p2graphic)->flip_background();
 
@@ -39,17 +36,17 @@ GenericState* WaitingMoveState::Refresh(RefreshEvent* ev)
 
 	delete buf;
 	*/
-	al_flip_display();
 
-	if (current_frame >= START_MOVING_FRAME)
+	al_flip_display();
+	if (current_frame == END_MOVEMENT_FRAME) 
 	{
-		MovingState* prox_estado = new MovingState;
-		return prox_estado;
+		IdleState* estado = new IdleState;
+		return estado;
 	}
 	else
 	{
-		return nullptr; //Como no cambia el estado devuelve nullptr.
+		EndMovingState* estado = new EndMovingState;
+		return estado;
 	}
-
+	return nullptr; //Como no cambia el estado devuelve nullptr.
 }
-
