@@ -8,11 +8,6 @@
 
 void fsm:: dispatch(GenericEvent* evt)
 {
-	event p = evt->GetEvent();
-	if (p!=REFRESH)
-	{
-		std::cout << p << endl;
-	}
 	switch (evt->GetEvent())
 	{
 		case PRESS_MOVE:
@@ -33,6 +28,9 @@ void fsm:: dispatch(GenericEvent* evt)
 
 		case REFRESH:
 			prox_estado = estado->Refresh((RefreshEvent*)evt);
+			break;
+		case QUIT:
+			prox_estado = estado->Quit((RefreshEvent*)evt);
 			break;
 
 	}

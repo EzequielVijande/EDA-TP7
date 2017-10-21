@@ -19,7 +19,6 @@ GenericState* EndJumpState::Refresh(RefreshEvent* ev)
 	(ev->p2graphic)->do_walking_step(*(ev->p2worm));
 	(ev->p2graphic)->do_jumping_step(*(ev->p2worm));
 
-	/*
 	for (unsigned int i = 0; i < (ev->worm_number); i++, (ev->it)++) //worm_number es la cantidad de worms controlados por otras maquinas
 	{												//it recorre la lista de WormInfo FALTA DEFINIR BIEN ESTE ITERADOR.
 		(ev->p2graphic)->do_walking_step(*(ev->it));
@@ -33,7 +32,6 @@ GenericState* EndJumpState::Refresh(RefreshEvent* ev)
 	len = (ev->socket_)->write_some(boost::asio::buffer(buf, 13)); //13: tamaño del buffer.
 
 	delete buf;
-	*/
 
 	al_flip_display();
 	
