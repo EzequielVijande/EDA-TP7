@@ -54,8 +54,7 @@ GenericState* GenericState::Refresh(RefreshEvent* ev)
 
 GenericState* GenericState::Quit(RefreshEvent* ev)
 {
-	
-	//Aca hay que mandar el paquete de Quit con boost
+	//Se envia el paquete de quit con boost
 	size_t len;
 	char buf[1];
 	buf[0] = 'Q';

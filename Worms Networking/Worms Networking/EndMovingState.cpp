@@ -23,7 +23,7 @@ GenericState*EndMovingState::Refresh(RefreshEvent* ev)
 
 	
 	for (unsigned int i = 0; i < (ev->worm_number); i++, (ev->it)++) //worm_number es la cantidad de worms controlados por otras maquinas
-	{												//it recorre la lista de WormInfo FALTA DEFINIR BIEN ESTE ITERADOR.
+	{												
 		(ev->p2graphic)->do_walking_step(*(ev->it));
 		(ev->p2graphic)->do_jumping_step(*(ev->it));
 

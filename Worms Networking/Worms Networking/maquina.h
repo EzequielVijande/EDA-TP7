@@ -5,15 +5,6 @@
 
 #define WORM_PACKAGE_LEN 13 //tamaño del campo de datos del package del Worm.
 
-/*
-#define HEADER 0         //ordenamiento del campo de datos del packacge de Worm.
-#define WORM_NUMBER 1
-#define STATE 2
-#define FRAME 3
-#define ORIENTATION 4
-#define POSX 5
-#define POSY 9
-*/
 class maquina
 {
 public:

@@ -70,7 +70,8 @@ int main(int argc, char ** argv)
 	}
 	else
 	{
-		getchar();
+		cout << "Presione enter para salir del programa..." << endl;
+		getchar(); //dentro de tryConnection de imprime el tipo de error de coexion. se espera a un enter e usuario para salir el programa
 		exit(-1);
 	}
 
@@ -79,9 +80,9 @@ int main(int argc, char ** argv)
 	worms.setKeys(P1_RIGHT, P1_LEFT, P1_UP);
 	EventGenerator eg(&worms,&Graphics,p2Mymaquina, event_queue); // se le pasan cosas que sobreviven al dispatcher
 
-	cout << "Timer inicializado" << endl;
-
 	al_start_timer(timer);
+
+	cout << "Inicializaciones exitosas, comenzando la simulacion!" << endl;
 	do
 	{
 		eg.searchForEvents();
@@ -93,6 +94,9 @@ int main(int argc, char ** argv)
 		}
 	}while(eg.isNotQuit());
 
+	cout << "Simulacion finalizada" << endl;
+	cout << "Presione enter para salir del programa" << endl;
+	getchar();
 	//destruyo todo lo que cree
 	
 	al_destroy_display(display);

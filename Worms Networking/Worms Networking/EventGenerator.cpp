@@ -19,7 +19,8 @@ EventGenerator::~EventGenerator()
 {
 	//no destruyo las clases de worm graficos o connection ya que estos
 	//se destruyen en sus propios destructores luego
-	if (!eventList.empty())
+
+	if (!eventList.empty()) //vacio las listas para que ya no puedan ser accedidas
 	{
 		eventList.clear();
 	}
@@ -37,15 +38,15 @@ void EventGenerator::searchForEvents()
 	size_t cant;
 	while (!finished)
 	{
-		if (al_get_next_event(eventQueue,&evento))
+		if (al_get_next_event(eventQueue,&evento)) //Eventos de Allegro
 		{
 			shape(evento);
 		}
-		else if (cant = socket_->read_some(boost::asio::buffer(buffer),error))
+		else if (cant = socket_->read_some(boost::asio::buffer(buffer),error)) //Eventos de Boost
 		{
 			if (!error)
 			{
-				if ((buffer[0] == 'W')||(buffer[0] == 'E')||(buffer[0] == 'Q'))
+				if ((buffer[0] == 'W')||(buffer[0] == 'E')||(buffer[0] == 'Q')) //Si es un evento de (W)orm, (Q)uit o (E)rror
 				{
 					shape(buffer, cant);
 				}
@@ -235,11 +236,11 @@ void EventGenerator::shape(char * buf, unsigned int cant)
 			newInfo.posy = a[1];
 			if (wormsList.size() == 0)
 			{
-				wormsList.push_back(newInfo); // si todavia no hay ningun worm se agregar sin verficiacion
+				wormsList.push_back(newInfo); // si todavia no hay ningun worm se agrega sin verficiacion
 			}
 			else
 			{
-				std::list<WormInfo>::iterator it;
+				std::list<WormInfo>::iterator it; //me fijo en la lista si ya se encuentra y lo reemplazo
 				it = wormsList.begin();
 				bool inserted = false;
 				for (int i = 0; i < wormsList.size(); i++, it++)
@@ -263,6 +264,7 @@ void EventGenerator::shape(char * buf, unsigned int cant)
 	{
 		// se recibe package de quit
 		quit = true;
+		std::cout << "Otro jugador a finalizado la simulacion" << endl;
 	}
 	else if (buf[0] == 'E')
 	{
