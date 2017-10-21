@@ -89,11 +89,11 @@ void graphic_movement::do_jumping_step(Worm &worm) {
 
 		if (worm.getFrameCount() >= 0 && worm.getFrameCount() < 5) {
 		}
-		else if (worm.getFrameCount() >= 5 && worm.getFrameCount() < 38) {
+		else if (worm.getFrameCount() >= 5 && worm.getFrameCount() < 38) { 
 			al_draw_bitmap(jump_img_lib[wjumpingseq_arr[worm.getFrameCount() - 5] - 1], worm.getPos().x, worm.getPos().y, worm.getSentido());
 		}
 
-		if ((worm.getFrameCount() >= 38) && (worm.getFrameCount() < 50)) {
+		if ((worm.getFrameCount() >= 38) && (worm.getFrameCount() <= 50)) {
 			al_draw_bitmap(jump_img_lib[wlandingseq_arr[worm.getFrameCount() - 38] - 1], worm.getPos().x, worm.getPos().y, worm.getSentido());
 		}
 
@@ -105,7 +105,7 @@ void graphic_movement::do_jumping_step(Worm &worm) {
 			al_draw_bitmap(jump_img_lib[wjumpingseq_arr[worm.getFrameCount() - 5] - 1], worm.getPos().x, worm.getPos().y, worm.getSentido());
 		}
 
-		if ((worm.getFrameCount() >= 38) && (worm.getFrameCount() < 50)) {
+		if ((worm.getFrameCount() >= 38) && (worm.getFrameCount() <= 50)) {
 			al_draw_bitmap(jump_img_lib[wlandingseq_arr[worm.getFrameCount() - 38] - 1], worm.getPos().x, worm.getPos().y, worm.getSentido());
 		}
 		break;
@@ -129,7 +129,7 @@ void graphic_movement::do_jumping_step(WormInfo & worm)
 			al_draw_bitmap(jump_img_lib[wjumpingseq_arr[(worm.frame) - 5] - 1], worm.posx, worm.posy, worm.orientation);
 		}
 
-		if ((worm.frame >= 38) && (worm.frame < 50)) {
+		if ((worm.frame >= 38) && (worm.frame <= 50)) {
 			al_draw_bitmap(jump_img_lib[wlandingseq_arr[(worm.frame) - 38] - 1], worm.posx, worm.posy, worm.orientation);
 		}
 
@@ -141,7 +141,7 @@ void graphic_movement::do_jumping_step(WormInfo & worm)
 			al_draw_bitmap(jump_img_lib[wjumpingseq_arr[(worm.frame) - 5] - 1], worm.posx, worm.posy, worm.orientation);
 		}
 
-		if ((worm.frame >= 38) && (worm.frame < 50)) {
+		if ((worm.frame >= 38) && (worm.frame <= 50)) {
 			al_draw_bitmap(jump_img_lib[wlandingseq_arr[(worm.frame) - 38] - 1], worm.posx, worm.posy, worm.orientation);
 		}
 		break;

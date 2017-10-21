@@ -35,7 +35,6 @@ GenericState*EndMovingState::Refresh(RefreshEvent* ev)
 	len = (ev->socket_)->write_some(boost::asio::buffer(buf, 13)); //13: tamaño del buffer.
 
 	delete buf;
-	
 
 	al_flip_display();
 	if (current_frame == END_MOVEMENT_FRAME) 

@@ -8,7 +8,6 @@
 
 void fsm:: dispatch(GenericEvent* evt)
 {
-	
 	switch (evt->GetEvent())
 	{
 		case PRESS_MOVE:
@@ -32,6 +31,8 @@ void fsm:: dispatch(GenericEvent* evt)
 			break;
 		case QUIT:
 			prox_estado = estado->Quit((RefreshEvent*)evt);
+			break;
+
 	}
 	if (prox_estado != nullptr)
 	{

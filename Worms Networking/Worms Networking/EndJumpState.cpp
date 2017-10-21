@@ -32,7 +32,6 @@ GenericState* EndJumpState::Refresh(RefreshEvent* ev)
 	len = (ev->socket_)->write_some(boost::asio::buffer(buf, 13)); //13: tamaño del buffer.
 
 	delete buf;
-	
 
 	al_flip_display();
 	
